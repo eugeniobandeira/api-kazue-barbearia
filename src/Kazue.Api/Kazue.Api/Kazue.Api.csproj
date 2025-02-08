@@ -14,4 +14,14 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Kazue.Application\Kazue.Application\Kazue.Application.csproj" />
+    <ProjectReference Include="..\..\Kazue.Exception\Kazue.Exception\Kazue.Exception.csproj" />
+    <ProjectReference Include="..\..\Kazue.Infrastructure\Kazue.Infrastructure\Kazue.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
 </Project>

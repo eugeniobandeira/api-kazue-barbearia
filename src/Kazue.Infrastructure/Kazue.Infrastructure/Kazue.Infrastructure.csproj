@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Kazue.Domain\Kazue.Domain\Kazue.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
