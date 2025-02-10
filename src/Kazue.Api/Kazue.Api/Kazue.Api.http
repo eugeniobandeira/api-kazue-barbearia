@@ -1,6 +1,0 @@
-@Kazue.Api_HostAddress = http://localhost:5145
-
-GET {{Kazue.Api_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
