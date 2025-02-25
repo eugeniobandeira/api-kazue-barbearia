@@ -1,10 +1,14 @@
-﻿using Kazue.Domain.Helper;
+﻿namespace Kazue.Domain.Response.Person;
 
-namespace Kazue.Domain.Response.Person;
-
-public abstract class PersonResponse
+public class RegisteredPersonResponse
 {
-    public string NM_PERSON { get; set; } = string.Empty;
-    public string DS_TOKEN { get; set; } = string.Empty;
-    public char TP_STATUS { get; set; }
+    public long Id { get; set; }
+    public string Name { get; set; } = string.Empty;
+    public string Surname { get; set; } = string.Empty;
+    public string Nickname { get; set; } = string.Empty;
+    public string Email { get; set; } = string.Empty;
+    public string Phone { get; set; } = string.Empty;
+    public DateTime DateOfBirth { get; set; }
+    public DateTime DateOfRegistry { get; set; }
+    public char Status { get; set; }
 }
