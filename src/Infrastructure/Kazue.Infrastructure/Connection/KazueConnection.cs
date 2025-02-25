@@ -13,7 +13,7 @@ public class KazueConnection : IKazueConnection
     public KazueConnection(IConfiguration configuration)
     {
         _config = configuration;
-        _connectionString = _config.GetConnectionString("Kazue");
+        _connectionString = _config.GetConnectionString("DefaultConnection");
     }
     public DbConnection GetConnection()
     {
