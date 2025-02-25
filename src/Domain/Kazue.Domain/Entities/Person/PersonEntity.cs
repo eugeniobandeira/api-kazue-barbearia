@@ -4,13 +4,12 @@ namespace Kazue.Domain.Entities.Person;
 
 public abstract class PersonEntity
 {
-    public long Id { get; set; }
-    public string Name { get; set; } = string.Empty;
-    public string Surname { get; set; } = string.Empty;
-    public string? Nickname { get; set; } = string.Empty;
-    public string? Email { get; set; } = string.Empty;
-    public string? Phone { get; set; } = string.Empty;
-    public char Status { get; set; }
-    public DateTime DateOfBirth { get; set; }
-    public DateTime DateOfRegistry { get; set; }
+    public string DS_NAME { get; set; } = string.Empty;
+    public string DS_SURNAME { get; set; } = string.Empty;
+    public string? DS_NICKNAME { get; set; } = string.Empty;
+    public string? DS_EMAIL { get; set; } = string.Empty;
+    public string? DS_PHONE { get; set; } = string.Empty;
+    public char TP_STATUS { get; set; }
+    public DateTime DT_BIRTH { get; set; }
+    public DateTime DT_REGISTRY { get; set; }
 }

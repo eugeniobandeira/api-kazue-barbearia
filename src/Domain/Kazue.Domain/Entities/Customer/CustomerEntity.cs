@@ -5,6 +5,6 @@ namespace Kazue.Domain.Entities.Customer;
 
 public class CustomerEntity : PersonEntity
 {
-    public string Role { get; set; } = RolesHelper.USER;
-    public Guid CustomerGuid  { get; set; }
+    public long ID_CUSTOMER { get; set; }
+    public string DS_ROLE { get; set; } = RolesHelper.USER;
 }

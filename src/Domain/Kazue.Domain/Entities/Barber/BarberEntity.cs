@@ -5,6 +5,6 @@ namespace Kazue.Domain.Entities.Barber;
 
 public class BarberEntity : PersonEntity
 {
-    public string Role { get; set; } = RolesHelper.ADMIN;
-    public Guid BarberGuid { get; set; }
+    public long ID_BARBER { get; set; }
+    public string DS_ROLE { get; set; } = RolesHelper.ADMIN;
 }
