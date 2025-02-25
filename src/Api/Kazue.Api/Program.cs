@@ -1,8 +1,16 @@
+using Kazue.Application;
+using Kazue.Infrastructure;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+#region Dependency Injection and Services
+builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddApplication();
+#endregion
 
 var app = builder.Build();
 

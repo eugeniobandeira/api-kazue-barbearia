@@ -15,9 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Kazue.Application\Kazue.Application\Kazue.Application.csproj" />
-    <ProjectReference Include="..\..\Kazue.Exception\Kazue.Exception\Kazue.Exception.csproj" />
-    <ProjectReference Include="..\..\Kazue.Infrastructure\Kazue.Infrastructure\Kazue.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\Application\Kazue.Application\Kazue.Application.csproj" />
   </ItemGroup>
 
 </Project>
