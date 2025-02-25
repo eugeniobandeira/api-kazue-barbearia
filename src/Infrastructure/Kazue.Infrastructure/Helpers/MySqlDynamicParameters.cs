@@ -9,7 +9,11 @@ public class MySqlDynamicParameters : SqlMapper.IDynamicParameters
     private readonly DynamicParameters _dynamicParameters = new DynamicParameters();
     private readonly List<MySqlParameter> _mySqlParameters = new List<MySqlParameter>();
 
-    public void Add(string name, MySqlDbType mySqlDbType, ParameterDirection direction, object value = null,
+    public void Add(
+        string name, 
+        MySqlDbType mySqlDbType, 
+        ParameterDirection direction, 
+        object? value = null,
         int? size = null)
     {
         MySqlParameter mySqlParameter;
