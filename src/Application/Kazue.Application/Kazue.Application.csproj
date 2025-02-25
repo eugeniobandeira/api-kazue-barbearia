@@ -7,8 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Kazue.Domain\Kazue.Domain\Kazue.Domain.csproj" />
-    <ProjectReference Include="..\..\Kazue.Exception\Kazue.Exception\Kazue.Exception.csproj" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Infrastructure\Kazue.Infrastructure\Kazue.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
