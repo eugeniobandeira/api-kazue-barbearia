@@ -1,0 +1,23 @@
+DELIMITER //
+CREATE DEFINER=`root`@`localhost` PROCEDURE `PERSON_SP_GET_BY_ID`(
+    IN P_ID_PERSON INT
+)
+BEGIN
+    SELECT 
+        ID_PERSON,
+        DS_NAME,
+        DS_SURNAME,
+        DS_NICKNAME,
+        DS_EMAIL,
+        DS_PHONE,
+        DS_ROLE,
+        TP_STATUS,
+        DT_BIRTH,
+        DT_REGISTRY
+    FROM 
+        PERSON
+    WHERE 
+        ID_PERSON = P_ID_PERSON;
+END //
+
+DELIMITER ;
