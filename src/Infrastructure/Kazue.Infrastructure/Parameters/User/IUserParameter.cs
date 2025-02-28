@@ -6,4 +6,5 @@ public interface IUserParameter
 {
     MySqlDynamicParameters CreateParameters(CreateUserRequest req);
     MySqlDynamicParameters GetByIdParameters(long id);
+    MySqlDynamicParameters GetByEmailParameters(string email);
 }

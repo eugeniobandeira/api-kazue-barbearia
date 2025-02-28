@@ -1,4 +1,5 @@
 ﻿using Kazue.Domain.Interfaces.Infrastructure.Connection;
+using Kazue.Domain.Interfaces.Infrastructure.Repository.User;
 using Kazue.Domain.Interfaces.Security.Cryptography;
 using Kazue.Domain.Interfaces.Security.Token;
 using Kazue.Domain.Interfaces.Service.LoggedUser;
@@ -25,7 +26,10 @@ public static class DependencyInjectionExtensions
 
     private static void AddRepositories(IServiceCollection services)
     {
-        services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<ICreateUserRepository, UserRepository>();
+        services.AddScoped<IReadUserRepository, UserRepository>();
+        services.AddScoped<IUpdateUserRepository, UserRepository>();
+        services.AddScoped<IDeleteUserRepository, UserRepository>();
     }
 
     private static void AddParameters(IServiceCollection services)

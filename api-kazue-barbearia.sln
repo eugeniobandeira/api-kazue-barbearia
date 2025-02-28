@@ -56,6 +56,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "User", "User", "{AE9C0259-2
 		database\procedures\person\user_sp_create.txt = database\procedures\person\user_sp_create.txt
 		database\procedures\person\user_sp_delete.txt = database\procedures\person\user_sp_delete.txt
 		database\procedures\person\user_sp_get.txt = database\procedures\person\user_sp_get.txt
+		user_sp_get_by_email.txt = user_sp_get_by_email.txt
 		database\procedures\person\user_sp_get_by_id.txt = database\procedures\person\user_sp_get_by_id.txt
 		database\procedures\person\user_sp_update.txt = database\procedures\person\user_sp_update.txt
 		database\procedures\person\user_sp_update_status.txt = database\procedures\person\user_sp_update_status.txt

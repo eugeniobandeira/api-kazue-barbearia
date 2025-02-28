@@ -39,14 +39,17 @@ public class UserRepository :
         return await GetById(id);
     }
 
-    public Task<bool> ExistUserWithEmail(string email)
-    {
-        throw new NotImplementedException();
-    }
 
-    public Task<UserEntity?> GetUserByEmail(string email)
+    public async Task<UserEntity?> GetByEmail(string email)
     {
-        throw new NotImplementedException();
+        await using var connection = _connection.GetConnection();
+
+        var parameters = _userParameter.GetByEmailParameters(email);
+
+        return (await connection.QueryAsync<UserEntity>(
+            sql: UserQuery.USER_SP_GET_BY_EMAIL,
+            param: parameters,
+            commandType: CommandType.StoredProcedure)).FirstOrDefault();
     }
 
     public async Task<UserEntity?> GetById(long id)

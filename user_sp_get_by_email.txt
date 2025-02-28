@@ -1,0 +1,27 @@
+DELIMITER //
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `USER_SP_GET_BY_EMAIL`(
+    IN P_DS_EMAIL VARCHAR(100)
+)
+BEGIN
+    SELECT 
+        USR.ID_USER,
+        USR.DS_NAME,
+        USR.DS_SURNAME,
+        USR.DS_NICKNAME,
+        USR.DS_EMAIL,
+        USR.DS_PASSWORD,
+        USR.DS_PHONE,
+        USR.DS_ROLE,
+        ST.ID_STATUS,
+        ST.DS_STATUS,
+        USR.DT_BIRTH,
+        USR.DT_REGISTRY
+    FROM 
+        USER USR
+	INNER JOIN STATUS ST ON ST.ID_STATUS = USR.ID_STATUS 
+    WHERE 
+        USR.DS_EMAIL = P_DS_EMAIL;
+END //
+
+DELIMITER ;

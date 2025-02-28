@@ -1,24 +1,23 @@
 ﻿using Kazue.Domain.Entities.User;
+using Kazue.Domain.Interfaces.Infrastructure.Connection;
+using Kazue.Domain.Interfaces.Infrastructure.Repository.User;
 using Kazue.Domain.Interfaces.Security.Token;
 using Kazue.Domain.Interfaces.Service.LoggedUser;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using Dapper;
-using Kazue.Infrastructure.Repository.User;
-using Kazue.Domain.Interfaces.Infrastructure.Connection;
 
 namespace Kazue.Infrastructure.Service.LoggedUser;
 
 internal class LoggedUser : ILoggedUser
 {
     private readonly IKazueConnection _connection;
-    private readonly IUserRepository _userRepository;
+    private readonly IReadUserRepository _readUserRepository;
     private readonly ITokenProvider _tokenProvider;
 
-    public LoggedUser(IKazueConnection connection, IUserRepository userRepository, ITokenProvider tokenProvider)
+    public LoggedUser(IKazueConnection connection, IReadUserRepository readUserRepository, ITokenProvider tokenProvider)
     {
         _connection = connection;
-        _userRepository = userRepository;
+        _readUserRepository = readUserRepository;
         _tokenProvider = tokenProvider;
     }
 
@@ -35,7 +34,7 @@ internal class LoggedUser : ILoggedUser
 
         await using var connection = _connection.GetConnection();
 
-        var loggedUser = await _userRepository.GetById(userId);
+        var loggedUser = await _readUserRepository.GetById(userId);
 
         return loggedUser;
 

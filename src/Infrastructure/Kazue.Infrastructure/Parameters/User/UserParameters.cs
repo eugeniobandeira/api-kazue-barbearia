@@ -32,4 +32,13 @@ public class UserParameters :
 
         return parameters;
     }
+
+    public MySqlDynamicParameters GetByEmailParameters(string email)
+    {
+        var parameters = new MySqlDynamicParameters();
+
+        parameters.Add("P_DS_EMAIL", MySqlDbType.String, ParameterDirection.Input, email);
+
+        return parameters;
+    }
 }
