@@ -1,4 +1,5 @@
-﻿using Kazue.Application.UseCases.User.Create;
+﻿using Kazue.Application.UseCases.Login.DoLogin;
+using Kazue.Application.UseCases.User.Create;
 using Kazue.Application.UseCases.User.GetById;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -15,6 +16,7 @@ public static class DependencyInjectionExtension
     {
         services.AddScoped<ICreateUserUseCase, CreateUserUseCase>();
         services.AddScoped<IGetUserByIdUseCase, GetUserByIdUseCase>();
+        services.AddScoped<IDoLoginUseCase, DoLoginUseCase>();
     }
 
 }

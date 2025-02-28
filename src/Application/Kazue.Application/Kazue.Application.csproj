@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Exception\Kazue.Exception\Kazue.Exception.csproj" />
     <ProjectReference Include="..\..\Infrastructure\Kazue.Infrastructure\Kazue.Infrastructure.csproj" />
   </ItemGroup>
 

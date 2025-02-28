@@ -5,5 +5,5 @@ namespace Kazue.Application.UseCases.Login.DoLogin;
 
 public interface IDoLoginUseCase
 {
-    Task<RegisteredUserResponse> Execute(LoginRequest req);
+    Task<RegisteredUserResponse> ExecuteAsync(LoginRequest req);
 }
