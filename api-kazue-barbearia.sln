@@ -39,37 +39,35 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02- Procedures", "02- Proce
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03 - Indexes", "03 - Indexes", "{7ACFD563-A4EB-46E5-8700-9772D2C76F07}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Person", "Person", "{71F70943-D12C-4A8F-B85D-CB96CF174F50}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "User", "User", "{71F70943-D12C-4A8F-B85D-CB96CF174F50}"
 	ProjectSection(SolutionItems) = preProject
-		person.txt = person.txt
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Person", "Person", "{F37C0276-F747-494C-892B-A28969344553}"
-	ProjectSection(SolutionItems) = preProject
-		person_sp_create.txt = person_sp_create.txt
-		person_sp_get_by_id.txt = person_sp_get_by_id.txt
-		person_sp_delete.txt = person_sp_delete.txt
-		person_sp_get.txt = person_sp_get.txt
-		person_sp_update.txt = person_sp_update.txt
-		person_sp_update_status.txt = person_sp_update_status.txt
+		database\tables\person\user.txt = database\tables\person\user.txt
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04 - Sequences", "04 - Sequences", "{6B1131B8-5B42-4A18-AEF7-7177590ED072}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Status", "Status", "{47387FBC-65B5-455B-B0FE-654A6BDB240C}"
 	ProjectSection(SolutionItems) = preProject
-		status.txt = status.txt
+		database\tables\status\status.txt = database\tables\status\status.txt
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Status", "Status", "{556458A2-2D87-47A7-9703-C6BD90AF0A74}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "User", "User", "{AE9C0259-2455-4085-B5CB-D844B0C60D12}"
 	ProjectSection(SolutionItems) = preProject
-		status_sp_delete.txt = status_sp_delete.txt
-		status_sp_get.txt = status_sp_get.txt
-		status_sp_get_by_id_or_description.txt = status_sp_get_by_id_or_description.txt
-		status_sp_update.txt = status_sp_update.txt
+		database\procedures\person\user_sp_create.txt = database\procedures\person\user_sp_create.txt
+		database\procedures\person\user_sp_delete.txt = database\procedures\person\user_sp_delete.txt
+		database\procedures\person\user_sp_get.txt = database\procedures\person\user_sp_get.txt
+		database\procedures\person\user_sp_get_by_id.txt = database\procedures\person\user_sp_get_by_id.txt
+		database\procedures\person\user_sp_update.txt = database\procedures\person\user_sp_update.txt
+		database\procedures\person\user_sp_update_status.txt = database\procedures\person\user_sp_update_status.txt
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "documentation", "documentation", "{562E31DD-6616-41FE-93F8-E6F83CC98A54}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Status", "Status", "{063D8DD7-B9EC-4DE1-A104-41974BE222A9}"
+	ProjectSection(SolutionItems) = preProject
+		database\procedures\status\status_sp_delete.txt = database\procedures\status\status_sp_delete.txt
+		database\procedures\status\status_sp_get.txt = database\procedures\status\status_sp_get.txt
+		database\procedures\status\status_sp_get_by_id_or_description.txt = database\procedures\status\status_sp_get_by_id_or_description.txt
+		database\procedures\status\status_sp_update.txt = database\procedures\status\status_sp_update.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -122,10 +120,10 @@ Global
 		{74F79272-98A3-4458-A01B-82AA5F7F0B6A} = {3BE04041-BEE6-4349-800B-FDCF30DA4B1A}
 		{7ACFD563-A4EB-46E5-8700-9772D2C76F07} = {3BE04041-BEE6-4349-800B-FDCF30DA4B1A}
 		{71F70943-D12C-4A8F-B85D-CB96CF174F50} = {77357AE9-3E1F-4301-9926-9DA50F63AADE}
-		{F37C0276-F747-494C-892B-A28969344553} = {74F79272-98A3-4458-A01B-82AA5F7F0B6A}
 		{6B1131B8-5B42-4A18-AEF7-7177590ED072} = {3BE04041-BEE6-4349-800B-FDCF30DA4B1A}
 		{47387FBC-65B5-455B-B0FE-654A6BDB240C} = {77357AE9-3E1F-4301-9926-9DA50F63AADE}
-		{556458A2-2D87-47A7-9703-C6BD90AF0A74} = {74F79272-98A3-4458-A01B-82AA5F7F0B6A}
+		{AE9C0259-2455-4085-B5CB-D844B0C60D12} = {74F79272-98A3-4458-A01B-82AA5F7F0B6A}
+		{063D8DD7-B9EC-4DE1-A104-41974BE222A9} = {74F79272-98A3-4458-A01B-82AA5F7F0B6A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F679CABC-6B98-4E9C-B9C3-9CA77008FC63}
