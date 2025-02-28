@@ -1,5 +1,5 @@
-﻿using Kazue.Application.UseCases.Barber.Create;
-using Kazue.Application.UseCases.Barber.GetById;
+﻿using Kazue.Application.UseCases.User.Create;
+using Kazue.Application.UseCases.User.GetById;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Kazue.Application;
@@ -13,8 +13,8 @@ public static class DependencyInjectionExtension
 
     private static void AddUseCases(IServiceCollection services)
     {
-        services.AddScoped<ICreateBarberUseCase, CreateBarberUseCase>();
-        services.AddScoped<IGetBarberByIdUseCase, GetBarberByIdUseCase>();
+        services.AddScoped<ICreateUserUseCase, CreateUserUseCase>();
+        services.AddScoped<IGetUserByIdUseCase, GetUserByIdUseCase>();
     }
 
 }
