@@ -1,15 +1,16 @@
-﻿using Kazue.Domain.Helper;
+﻿namespace Kazue.Domain.Entities.User;
 
-namespace Kazue.Domain.Entities.Person;
-
-public abstract class PersonEntity
+public class UserEntity
 {
+    public long ID_USER { get; set; }
     public string DS_NAME { get; set; } = string.Empty;
     public string DS_SURNAME { get; set; } = string.Empty;
     public string? DS_NICKNAME { get; set; } = string.Empty;
     public string? DS_EMAIL { get; set; } = string.Empty;
     public string? DS_PHONE { get; set; } = string.Empty;
-    public char TP_STATUS { get; set; }
+    public string? DS_ROLE { get; set; } = string.Empty;
+    public long ID_STATUS { get; set; }
+    public string? DS_STATUS { get; set; } = string.Empty;
     public DateTime DT_BIRTH { get; set; }
     public DateTime DT_REGISTRY { get; set; }
 }
