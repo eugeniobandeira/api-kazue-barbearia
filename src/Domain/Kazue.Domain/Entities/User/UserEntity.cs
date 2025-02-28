@@ -7,6 +7,7 @@ public class UserEntity
     public string DS_SURNAME { get; set; } = string.Empty;
     public string? DS_NICKNAME { get; set; } = string.Empty;
     public string? DS_EMAIL { get; set; } = string.Empty;
+    public string DS_PASSWORD { get; set; } = string.Empty;
     public string? DS_PHONE { get; set; } = string.Empty;
     public string? DS_ROLE { get; set; } = string.Empty;
     public long ID_STATUS { get; set; }
