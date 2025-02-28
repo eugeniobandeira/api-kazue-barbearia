@@ -1,21 +1,21 @@
 ﻿using Kazue.Application.Adapter.User;
+using Kazue.Domain.Interfaces.Infrastructure.Repository.User;
 using Kazue.Domain.Response.Person;
-using Kazue.Infrastructure.Repository.User;
 
 namespace Kazue.Application.UseCases.User.GetById;
 
 public class GetUserByIdUseCase : IGetUserByIdUseCase
 {
-    private readonly IUserRepository _userRepository;
+    private readonly IReadUserRepository _readUserRepository;
 
-    public GetUserByIdUseCase(IUserRepository userRepository)
+    public GetUserByIdUseCase(IReadUserRepository readUserRepository)
     {
-        _userRepository = userRepository;
+        _readUserRepository = readUserRepository;
     }
 
     public async Task<UserResponse> ExecuteAsync(long id)
     {
-        var repositoryResponse = await _userRepository.GetById(id);
+        var repositoryResponse = await _readUserRepository.GetById(id);
 
         var response = UserAdapter.FromEntityToResponse(repositoryResponse);
 

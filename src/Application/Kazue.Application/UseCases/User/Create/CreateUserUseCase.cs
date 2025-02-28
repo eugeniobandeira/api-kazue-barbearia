@@ -1,23 +1,23 @@
-﻿using Kazue.Domain.Interfaces.Security.Cryptography;
+﻿using Kazue.Domain.Interfaces.Infrastructure.Repository.User;
+using Kazue.Domain.Interfaces.Security.Cryptography;
 using Kazue.Domain.Interfaces.Security.Token;
 using Kazue.Domain.Request.User;
 using Kazue.Domain.Response.User;
-using Kazue.Infrastructure.Repository.User;
 
 namespace Kazue.Application.UseCases.User.Create;
 
 public class CreateUserUseCase : ICreateUserUseCase
 {
-    private readonly IUserRepository _userRepository;
+    private readonly ICreateUserRepository _createUserRepository;
     private readonly IPasswordEncrypter _passwordEncrypter;
     private readonly IJwtTokenGenerator _tokenGenerator;
 
     public CreateUserUseCase(
-        IUserRepository userRepository,
+        ICreateUserRepository createUserRepository,
         IPasswordEncrypter passwordEncrypter,
         IJwtTokenGenerator tokenGenerator)
     {
-        _userRepository = userRepository;
+        _createUserRepository = createUserRepository;
         _passwordEncrypter = passwordEncrypter;
         _tokenGenerator = tokenGenerator;
     }
@@ -26,7 +26,7 @@ public class CreateUserUseCase : ICreateUserUseCase
     {
         req.Password = _passwordEncrypter.Encrypt(req.Password);
 
-        var repositoryResponse = await _userRepository.Create(req);
+        var repositoryResponse = await _createUserRepository.Create(req);
 
         return new RegisteredUserResponse
         {
