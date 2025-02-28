@@ -1,0 +1,26 @@
+DELIMITER //
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `USER_SP_GET_BY_ID`(
+    IN P_ID_USER INT
+)
+BEGIN
+    SELECT 
+        USR.ID_USER,
+        USR.DS_NAME,
+        USR.DS_SURNAME,
+        USR.DS_NICKNAME,
+        USR.DS_EMAIL,
+        USR.DS_PHONE,
+        USR.DS_ROLE,
+        ST.ID_STATUS,
+        ST.DS_STATUS,
+        USR.DT_BIRTH,
+        USR.DT_REGISTRY
+    FROM 
+        USER USR
+	INNER JOIN STATUS ST ON ST.ID_STATUS = USR.ID_STATUS 
+    WHERE 
+        ID_USER = P_ID_USER;
+END //
+
+DELIMITER ;
