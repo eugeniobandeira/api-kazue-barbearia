@@ -1,14 +1,14 @@
-﻿using Kazue.Domain.Request.Barber;
+﻿using Kazue.Domain.Request.User;
 using Kazue.Infrastructure.Helpers;
 using MySql.Data.MySqlClient;
 using System.Data;
 
-namespace Kazue.Infrastructure.Parameters.Barber;
+namespace Kazue.Infrastructure.Parameters.User;
 
-public class BarberParameters : 
-    IBarberParameter
+public class UserParameters : 
+    IUserParameter
 {
-    public MySqlDynamicParameters CreateParameters(CreateBarberRequest req)
+    public MySqlDynamicParameters CreateParameters(CreateUserRequest req)
     {
         var parameters = new MySqlDynamicParameters();
 
@@ -18,9 +18,7 @@ public class BarberParameters :
         parameters.Add("P_DS_EMAIL", MySqlDbType.String, ParameterDirection.Input, req.Email);
         parameters.Add("P_DS_PHONE", MySqlDbType.String, ParameterDirection.Input, req.Phone);
         parameters.Add("P_DS_ROLE", MySqlDbType.String, ParameterDirection.Input, req.Role);
-
         parameters.Add("P_DS_PASSWORD", MySqlDbType.String, ParameterDirection.Input, req.Password);
-
         parameters.Add("P_DT_BIRTH", MySqlDbType.DateTime, direction: ParameterDirection.Input, req.DateOfBirth);
 
         return parameters;
@@ -30,7 +28,7 @@ public class BarberParameters :
     {
         var parameters = new MySqlDynamicParameters();
 
-        parameters.Add("P_ID_BARBER", MySqlDbType.Int32, ParameterDirection.Input, id);
+        parameters.Add("P_ID_USER", MySqlDbType.Int32, ParameterDirection.Input, id);
 
         return parameters;
     }

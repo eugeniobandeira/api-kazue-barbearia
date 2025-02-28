@@ -1,4 +1,4 @@
-﻿using Kazue.Domain.Interfaces.Connection;
+﻿using Kazue.Domain.Interfaces.Infrastructure.Connection;
 using Microsoft.Extensions.Configuration;
 using MySql.Data.MySqlClient;
 using System.Data.Common;
