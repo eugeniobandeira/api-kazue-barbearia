@@ -1,6 +1,6 @@
 ﻿using Kazue.Domain.Entities.User;
 
-namespace Kazue.Infrastructure.Repository.User;
+namespace Kazue.Domain.Interfaces.Infrastructure.Repository.User;
 
 public interface IDeleteUserRepository
 {
