@@ -14,4 +14,5 @@ public class UserEntity
     public string? DS_STATUS { get; set; } = string.Empty;
     public DateTime DT_BIRTH { get; set; }
     public DateTime DT_REGISTRY { get; set; }
+    public int QT_REGISTRY { get; set; }
 }
