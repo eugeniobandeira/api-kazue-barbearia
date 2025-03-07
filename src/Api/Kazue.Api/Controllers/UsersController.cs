@@ -1,37 +1,59 @@
-﻿using Kazue.Application.UseCases.User.Create;
+﻿using Kazue.Application.UseCases.User.ChangePassword;
+using Kazue.Application.UseCases.User.Create;
+using Kazue.Application.UseCases.User.Delete;
+using Kazue.Application.UseCases.User.Get;
 using Kazue.Application.UseCases.User.GetById;
+using Kazue.Application.UseCases.User.Update;
 using Kazue.Domain.Request.User;
 using Kazue.Domain.Response.Error;
 using Kazue.Domain.Response.Person;
+using Kazue.Domain.Response.Shared;
 using Kazue.Domain.Response.User;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Kazue.Api.Controllers;
+
+/// <summary>
+/// Controller responsible for manage data regarding users
+/// </summary>
 [Route("v1/api/users")]
 [ApiController]
 public class UsersController : ControllerBase
 {
+    /// <summary>
+    /// Create a user
+    /// </summary>
+    /// <param name="useCase"></param>
+    /// <param name="req"></param>
+    /// <returns></returns>
     [HttpPost]
     [ProducesResponseType(typeof(RegisteredUserResponse), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> RegisterPersonAsync(
+    public async Task<IActionResult> RegisterAsync(
         [FromServices] ICreateUserUseCase useCase,
         [FromBody] CreateUserRequest req)
     {
         var response = await useCase.ExecuteAsync(req);
 
-        var locationUrl = Url.Action(nameof(GetPersonByIdAsync), new { id = response.Id });
+        var locationUrl = Url.Action(nameof(GetByIdAsync), new { id = response.Id });
 
         Response.Headers.Location = locationUrl;
 
         return StatusCode(StatusCodes.Status201Created, response);
     }
 
+    /// <summary>
+    /// Get a user by id
+    /// </summary>
+    /// <param name="useCase"></param>
+    /// <param name="id"></param>
+    /// <returns></returns>
     [HttpGet]
     [Route("{id}")]
     [ProducesResponseType(typeof(UserResponse), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> GetPersonByIdAsync(
+    public async Task<IActionResult> GetByIdAsync(
         [FromServices] IGetUserByIdUseCase useCase,
         long id)
     {
@@ -42,4 +64,84 @@ public class UsersController : ControllerBase
 
         return BadRequest();
     }
+
+    /// <summary>
+    /// Get a list of users
+    /// </summary>
+    /// <param name="req"></param>
+    /// <param name="useCase"></param>
+    /// <returns></returns>
+    [HttpGet]
+    [ProducesResponseType(typeof(ListApiResponse<UserResponse>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> GetAsync(
+        [FromQuery] GetUserRequest req,
+        [FromServices] IGetUserUseCase useCase)
+    {
+        var response = await useCase.ExecuteAsync(req);
+
+        if (response.Response.Any())
+            return Ok(response);
+
+        return BadRequest();
+    }
+
+    /// <summary>
+    /// UpdateAsync users data profile
+    /// </summary>
+    /// <param name="useCase"></param>
+    /// <param name="req"></param>
+    /// <returns></returns>
+    [HttpPut]
+    [Route("{id}")]
+    [Authorize]
+    [ProducesResponseType(typeof(UserProfileResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> UpdateAsync(
+        [FromServices] IUpdateUserUseCase useCase,
+        [FromBody] UpdateUserRequest req,
+        long id)
+    {
+        var response = await useCase.ExecuteAsync(req);
+
+        return Ok(response);
+    }
+
+    /// <summary>
+    /// UpdateAsync users password
+    /// </summary>
+    /// <param name="useCase"></param>
+    /// <param name="req"></param>
+    /// <returns></returns>
+    [HttpPut("change-password")]
+    [Authorize]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> ChangePasswordAsync(
+        [FromServices] IChangePasswordUserUseCase useCase,
+        [FromBody] ChangePasswordRequest req)
+    {
+        await useCase.ExecuteAsync(req);
+
+        return NoContent();
+    }
+
+    /// <summary>
+    /// Delete user account
+    /// </summary>
+    /// <param name="useCase"></param>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    [HttpDelete]
+    [Route("{id}")]
+    [Authorize]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    public async Task<IActionResult> DeleteAsync(
+        [FromServices] IDeleteUserUseCase useCase,
+        long id)
+    {
+        await useCase.ExecuteAsync();
+        return NoContent();
+    }
+
 }
