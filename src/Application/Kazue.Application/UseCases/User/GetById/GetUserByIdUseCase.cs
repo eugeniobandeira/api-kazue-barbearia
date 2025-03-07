@@ -1,6 +1,8 @@
 ﻿using Kazue.Application.Adapter.User;
 using Kazue.Domain.Interfaces.Infrastructure.Repository.User;
 using Kazue.Domain.Response.Person;
+using Kazue.Exception.ExceptionBase;
+using Kazue.Exception.MessageResource;
 
 namespace Kazue.Application.UseCases.User.GetById;
 
@@ -16,6 +18,9 @@ public class GetUserByIdUseCase : IGetUserByIdUseCase
     public async Task<UserResponse> ExecuteAsync(long id)
     {
         var repositoryResponse = await _readUserRepository.GetById(id);
+
+        if (repositoryResponse is null)
+            throw new NotFoundException(ErrorMessageResource.NOT_FOUND_EXCEPTION);
 
         var response = UserAdapter.FromEntityToResponse(repositoryResponse);
 
