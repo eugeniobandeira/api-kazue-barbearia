@@ -41,4 +41,33 @@ public class UserParameters :
 
         return parameters;
     }
+
+    public MySqlDynamicParameters UpdateParameters(long id, UpdateUserRequest req)
+    {
+        var parameters = new MySqlDynamicParameters();
+
+        parameters.Add("P_ID_USER", MySqlDbType.Int64, ParameterDirection.Input, id);
+        parameters.Add("P_DS_NAME", MySqlDbType.String, ParameterDirection.Input, req.Name);
+        parameters.Add("P_DS_SURNAME", MySqlDbType.String, ParameterDirection.Input, req.Surname);
+        parameters.Add("P_DS_NICKNAME", MySqlDbType.String, ParameterDirection.Input, req.Nickname);
+        parameters.Add("P_DS_EMAIL", MySqlDbType.String, ParameterDirection.Input, req.Email);
+        parameters.Add("P_DS_PHONE", MySqlDbType.String, ParameterDirection.Input, req.Phone);
+
+        return parameters;
+    }
+
+    public MySqlDynamicParameters GetAllParameters(GetUserRequest req)
+    {
+        var parameters = new MySqlDynamicParameters();
+
+        parameters.Add("P_DS_NAME", MySqlDbType.String, ParameterDirection.Input, req.Name);
+        parameters.Add("P_DS_SURNAME", MySqlDbType.String, ParameterDirection.Input, req.Surname);
+        parameters.Add("P_DS_NICKNAME", MySqlDbType.String, ParameterDirection.Input, req.Nickname);
+        parameters.Add("P_DS_EMAIL", MySqlDbType.String, ParameterDirection.Input, req.Email);
+        parameters.Add("P_DS_PHONE", MySqlDbType.String, ParameterDirection.Input, req.Phone);
+        parameters.Add("P_PAGE", MySqlDbType.Int64, ParameterDirection.Input, req.Page);
+        parameters.Add("P_PAGE_SIZE", MySqlDbType.Int64, ParameterDirection.Input, req.PageSize);
+
+        return parameters;
+    }
 }
