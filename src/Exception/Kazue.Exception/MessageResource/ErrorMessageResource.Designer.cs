@@ -22,21 +22,21 @@ namespace Kazue.Exception.MessageResource {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class ErrorMessageResource {
+    public class ErrorMessageResource {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal ErrorMessageResource() {
+        public ErrorMessageResource() {
         }
         
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Kazue.Exception.MessageResource.ErrorMessageResource", typeof(ErrorMessageResource).Assembly);
@@ -51,7 +51,7 @@ namespace Kazue.Exception.MessageResource {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,11 +61,164 @@ namespace Kazue.Exception.MessageResource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Code or description already registered.
+        /// </summary>
+        public static string CODE_DESCRIPTION_EXCEPTION {
+            get {
+                return ResourceManager.GetString("CODE_DESCRIPTION_EXCEPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You are already waiting in queue (in progress).
+        /// </summary>
+        public static string CUSTOMER_ALREADY_WAITING {
+            get {
+                return ResourceManager.GetString("CUSTOMER_ALREADY_WAITING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email already registered.
+        /// </summary>
+        public static string EMAIL_ALREADY_REGISTERED {
+            get {
+                return ResourceManager.GetString("EMAIL_ALREADY_REGISTERED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The barber id is mandatory.
+        /// </summary>
+        public static string EMPTY_BARBER {
+            get {
+                return ResourceManager.GetString("EMPTY_BARBER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The code can not be null.
+        /// </summary>
+        public static string EMPTY_CODE {
+            get {
+                return ResourceManager.GetString("EMPTY_CODE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The customer id must be provided.
+        /// </summary>
+        public static string EMPTY_CUSTOMER {
+            get {
+                return ResourceManager.GetString("EMPTY_CUSTOMER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The description can not be null.
+        /// </summary>
+        public static string EMPTY_DESCRIPTION {
+            get {
+                return ResourceManager.GetString("EMPTY_DESCRIPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email must be provided.
+        /// </summary>
+        public static string EMPTY_EMAIL {
+            get {
+                return ResourceManager.GetString("EMPTY_EMAIL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name must be provided.
+        /// </summary>
+        public static string EMPTY_NAME {
+            get {
+                return ResourceManager.GetString("EMPTY_NAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to At least one service must be selected.
+        /// </summary>
+        public static string EMPTY_SERVICE {
+            get {
+                return ResourceManager.GetString("EMPTY_SERVICE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This email is not valid.
+        /// </summary>
+        public static string INVALID_EMAIL {
+            get {
+                return ResourceManager.GetString("INVALID_EMAIL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid email or password.
         /// </summary>
-        internal static string INVALID_EMAIL_OR_PASSWORD {
+        public static string INVALID_EMAIL_OR_PASSWORD {
             get {
                 return ResourceManager.GetString("INVALID_EMAIL_OR_PASSWORD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password must be at least 8 characters.
+        /// </summary>
+        public static string INVALID_PASSWORD_LENGTH {
+            get {
+                return ResourceManager.GetString("INVALID_PASSWORD_LENGTH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password can not be null or witespace.
+        /// </summary>
+        public static string INVALID_PASSWORD_NULL_OR_WHITE_SPACE {
+            get {
+                return ResourceManager.GetString("INVALID_PASSWORD_NULL_OR_WHITE_SPACE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Id not found.
+        /// </summary>
+        public static string NOT_FOUND_EXCEPTION {
+            get {
+                return ResourceManager.GetString("NOT_FOUND_EXCEPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password does not match current password.
+        /// </summary>
+        public static string PASSWORD_DIFFERNT_CURRENT_PASSWORD {
+            get {
+                return ResourceManager.GetString("PASSWORD_DIFFERNT_CURRENT_PASSWORD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The price must be greather than zero.
+        /// </summary>
+        public static string PRICE_NOT_GREATER_THAN_ZERO {
+            get {
+                return ResourceManager.GetString("PRICE_NOT_GREATER_THAN_ZERO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unknown error.
+        /// </summary>
+        public static string UNKNOWN_ERROR {
+            get {
+                return ResourceManager.GetString("UNKNOWN_ERROR", resourceCulture);
             }
         }
     }

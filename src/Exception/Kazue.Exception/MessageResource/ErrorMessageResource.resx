@@ -117,8 +117,76 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="EMAIL_ALREADY_REGISTERED" xml:space="preserve">
+    <value>Email already registered</value>
+    <comment>Já existe um usuário para este email</comment>
+  </data>
+  <data name="EMPTY_EMAIL" xml:space="preserve">
+    <value>Email must be provided</value>
+    <comment>O email deve ser informado</comment>
+  </data>
+  <data name="EMPTY_NAME" xml:space="preserve">
+    <value>Name must be provided</value>
+    <comment>O nome deve ser informado</comment>
+  </data>
+  <data name="INVALID_EMAIL" xml:space="preserve">
+    <value>This email is not valid</value>
+    <comment>Email inválido</comment>
+  </data>
   <data name="INVALID_EMAIL_OR_PASSWORD" xml:space="preserve">
     <value>Invalid email or password</value>
     <comment>E-mail ou senha inválido</comment>
+  </data>
+  <data name="INVALID_PASSWORD_LENGTH" xml:space="preserve">
+    <value>Password must be at least 8 characters</value>
+    <comment>A senha deve ter no mínimo 8 caracteres</comment>
+  </data>
+  <data name="INVALID_PASSWORD_NULL_OR_WHITE_SPACE" xml:space="preserve">
+    <value>Password can not be null or witespace</value>
+    <comment>A senha não pode ser nula ou espaços em branco</comment>
+  </data>
+  <data name="NOT_FOUND_EXCEPTION" xml:space="preserve">
+    <value>Id not found</value>
+    <comment>Id não encontrado</comment>
+  </data>
+  <data name="PASSWORD_DIFFERNT_CURRENT_PASSWORD" xml:space="preserve">
+    <value>Password does not match current password</value>
+    <comment>A senha informada está diferente da senha atual</comment>
+  </data>
+  <data name="CODE_DESCRIPTION_EXCEPTION" xml:space="preserve">
+    <value>Code or description already registered</value>
+    <comment>Código ou descrição já registrada</comment>
+  </data>
+  <data name="UNKNOWN_ERROR" xml:space="preserve">
+    <value>Unknown error</value>
+    <comment>Erro desconhecido</comment>
+  </data>
+  <data name="EMPTY_CODE" xml:space="preserve">
+    <value>The code can not be null</value>
+    <comment>O Código não pode ser nulo</comment>
+  </data>
+  <data name="EMPTY_DESCRIPTION" xml:space="preserve">
+    <value>The description can not be null</value>
+    <comment>A descrição não pode ser nula</comment>
+  </data>
+  <data name="PRICE_NOT_GREATER_THAN_ZERO" xml:space="preserve">
+    <value>The price must be greather than zero</value>
+    <comment>O preço deve ser maior que zero</comment>
+  </data>
+  <data name="EMPTY_BARBER" xml:space="preserve">
+    <value>The barber id is mandatory</value>
+    <comment>O id do barbeiro é obrigatório</comment>
+  </data>
+  <data name="EMPTY_SERVICE" xml:space="preserve">
+    <value>At least one service must be selected</value>
+    <comment>É necessário selecionar ao menos um serviço</comment>
+  </data>
+  <data name="EMPTY_CUSTOMER" xml:space="preserve">
+    <value>The customer id must be provided</value>
+    <comment>O id do cliente deve ser informado</comment>
+  </data>
+  <data name="CUSTOMER_ALREADY_WAITING" xml:space="preserve">
+    <value>You are already waiting in queue (in progress)</value>
+    <comment>Você já está aguardando na fila (existe um registro na fila ainda não concluído)</comment>
   </data>
 </root>

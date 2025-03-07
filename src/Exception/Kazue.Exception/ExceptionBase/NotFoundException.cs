@@ -1,5 +1,4 @@
-﻿
-using System.Net;
+﻿using System.Net;
 
 namespace Kazue.Exception.ExceptionBase;
 
@@ -12,6 +11,6 @@ public class NotFoundException : KazueException
 
     public override List<string> GetErrors()
     {
-        return new List<string>() { Message };
+        return [Message];
     }
 }
