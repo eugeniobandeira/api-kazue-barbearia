@@ -6,6 +6,7 @@ using Kazue.Infrastructure.Parameters.User;
 using Kazue.Infrastructure.Queries.User;
 using System.Data;
 using Kazue.Domain.Interfaces.Infrastructure.Repository.User;
+using Kazue.Domain.Response.Shared;
 
 namespace Kazue.Infrastructure.Repository.User;
 
@@ -72,5 +73,17 @@ public class UserRepository :
     public Task DeleteAsync(UserEntity userEntity)
     {
         throw new NotImplementedException();
+    }
+
+    public async Task<List<UserEntity>> GetAll(GetUserRequest req)
+    {
+        await using var connection = _connection.GetConnection();
+
+        var parameters = _userParameter.GetAllParameters(req);
+
+        return (await connection.QueryAsync<UserEntity>(
+            sql: UserQuery.USER_SP_GET,
+            param: parameters,
+            commandType: CommandType.StoredProcedure)).ToList();
     }
 }
