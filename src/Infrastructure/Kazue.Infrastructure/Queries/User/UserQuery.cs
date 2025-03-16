@@ -14,5 +14,7 @@ public static class UserQuery
 
     public const string USER_SP_UPDATE = "USER_SP_UPDATE";
 
+    public const string USER_SP_UPDATE_PASSWORD = "USER_SP_UPDATE_PASSWORD";
+
     public const string USER_SP_UPDATE_STATUS = "USER_SP_UPDATE_STATUS";
 }

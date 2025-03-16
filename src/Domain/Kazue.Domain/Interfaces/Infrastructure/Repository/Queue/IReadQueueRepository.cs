@@ -5,7 +5,7 @@ namespace Kazue.Domain.Interfaces.Infrastructure.Repository.Queue;
 
 public interface IReadQueueRepository
 {
-    Task<QueueEntity?> GetById(long id);
-    Task<QueueEntity?> GetByIdUser(long id);
+    Task<QueueEntity?> GetById(Guid id);
+    Task<QueueEntity?> GetByIdUser(Guid id);
     Task<List<QueueEntity>> GetAll(GetQueueRequest req);
 }

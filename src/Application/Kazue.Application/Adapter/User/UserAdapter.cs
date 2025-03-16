@@ -1,5 +1,5 @@
 ﻿using Kazue.Domain.Entities.User;
-using Kazue.Domain.Response.Person;
+using Kazue.Domain.Response.User;
 
 namespace Kazue.Application.Adapter.User;
 

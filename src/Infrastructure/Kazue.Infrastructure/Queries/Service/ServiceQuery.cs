@@ -10,5 +10,7 @@ public class ServiceQuery
 
     public const string SERVICE_SP_GET_BY_ID = "SERVICE_SP_GET_BY_ID";
 
+    public const string SERVICE_SP_GET_BY_CODE_OR_DESCRIPTION = "SERVICE_SP_GET_BY_CODE_OR_DESCRIPTION";
+    
     public const string SERVICE_SP_UPDATE = "SERVICE_SP_UPDATE";
 }

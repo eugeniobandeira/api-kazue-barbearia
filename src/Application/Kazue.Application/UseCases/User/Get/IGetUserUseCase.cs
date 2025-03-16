@@ -1,6 +1,6 @@
 ﻿using Kazue.Domain.Request.User;
-using Kazue.Domain.Response.Person;
 using Kazue.Domain.Response.Shared;
+using Kazue.Domain.Response.User;
 
 namespace Kazue.Application.UseCases.User.Get;
 

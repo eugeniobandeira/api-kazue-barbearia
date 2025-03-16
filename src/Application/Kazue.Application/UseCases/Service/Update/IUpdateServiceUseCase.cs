@@ -5,5 +5,5 @@ namespace Kazue.Application.UseCases.Service.Update;
 
 public interface IUpdateServiceUseCase
 {
-    Task<ServiceResponse> ExecuteAsync(long id, ServiceRequest req);
+    Task<ServiceResponse> ExecuteAsync(Guid id, ServiceRequest req);
 }

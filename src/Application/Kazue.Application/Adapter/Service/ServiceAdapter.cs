@@ -8,7 +8,7 @@ public static class ServiceAdapter
     public static ServiceResponse FromEntityToResponse(ServiceEntity? entity)
     {
         if (entity is null)
-            throw new ArgumentNullException("Cannot adapt a null entity to response", nameof(entity));
+            throw new ArgumentNullException(nameof(entity), "Cannot adapt a null entity to response");
 
         return new ServiceResponse
         {

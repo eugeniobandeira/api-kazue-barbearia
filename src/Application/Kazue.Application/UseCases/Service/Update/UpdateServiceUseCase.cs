@@ -8,20 +8,15 @@ using Kazue.Exception.MessageResource;
 
 namespace Kazue.Application.UseCases.Service.Update;
 
-public class UpdateServiceUseCase : IUpdateServiceUseCase
+public class UpdateServiceUseCase(
+    IReadServiceRepository readServiceRepository,
+    IUpdateServiceRepository updateServiceRepository) 
+    : IUpdateServiceUseCase
 {
-    private readonly IReadServiceRepository _readServiceRepository;
-    private readonly IUpdateServiceRepository _updateServiceRepository;
+    private readonly IReadServiceRepository _readServiceRepository = readServiceRepository;
+    private readonly IUpdateServiceRepository _updateServiceRepository = updateServiceRepository;
 
-    public UpdateServiceUseCase(
-        IReadServiceRepository readServiceRepository,
-        IUpdateServiceRepository updateServiceRepository)
-    {
-        _readServiceRepository = readServiceRepository;
-        _updateServiceRepository = updateServiceRepository;
-    }
-
-    public async Task<ServiceResponse> ExecuteAsync(long id, ServiceRequest req)
+    public async Task<ServiceResponse> ExecuteAsync(Guid id, ServiceRequest req)
     {
         await Validate(id, req);
 
@@ -32,14 +27,12 @@ public class UpdateServiceUseCase : IUpdateServiceUseCase
         return ServiceAdapter.FromEntityToResponse(response);
     }
 
-    private async Task Validate(long id, ServiceRequest req)
+    private async Task Validate(Guid id, ServiceRequest req)
     {
         var result = new ServiceValidator().Validate(req);
 
-        var repositoryResponse = await _readServiceRepository.GetById(id);
-
-        if (repositoryResponse is null)
-            throw new NotFoundException(ErrorMessageResource.NOT_FOUND_EXCEPTION);
+        var repositoryResponse = await _readServiceRepository.GetById(id) ?? 
+                                 throw new NotFoundException(ErrorMessageResource.NOT_FOUND_EXCEPTION);
 
         var entity = await _readServiceRepository.GetByCodeOrDescription(req);
 

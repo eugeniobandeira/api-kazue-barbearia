@@ -15,7 +15,7 @@ public class GetStatusByIdUseCase : IGetStatusByIdUseCase
         _readStatusRepository = readStatusRepository;
     }
 
-    public async Task<StatusResponse> ExecuteAsync(long id)
+    public async Task<StatusResponse> ExecuteAsync(Guid id)
     {
         var repositoryResponse = await _readStatusRepository.GetById(id);
 

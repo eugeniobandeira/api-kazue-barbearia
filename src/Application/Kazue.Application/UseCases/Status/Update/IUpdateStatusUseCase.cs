@@ -5,5 +5,5 @@ namespace Kazue.Application.UseCases.Status.Update;
 
 public interface IUpdateStatusUseCase
 {
-    Task<StatusResponse> ExecuteAsync(long id, StatusRequest req);
+    Task<StatusResponse> ExecuteAsync(Guid id, StatusRequest req);
 }

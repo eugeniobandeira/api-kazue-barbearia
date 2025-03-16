@@ -1,8 +1,9 @@
-﻿using Kazue.Domain.Entities.User;
+﻿using Kazue.Domain.Request.User;
 
-namespace Kazue.Infrastructure.Repository.User;
+namespace Kazue.Domain.Interfaces.Infrastructure.Repository.User;
 
 public interface IUpdateUserRepository
 {
-    void Update(UserEntity req);
+    Task UpdateAsync(Guid id, UpdateUserRequest req);
+    Task ChangePasswordAsync(Guid id, ChangePasswordRequest req);
 }

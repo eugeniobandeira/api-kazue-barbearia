@@ -2,5 +2,5 @@
 
 public interface IDeleteStatusUseCase
 {
-    Task ExecuteAsync(long id);
+    Task ExecuteAsync(Guid id);
 }

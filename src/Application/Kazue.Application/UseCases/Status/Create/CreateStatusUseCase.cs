@@ -8,18 +8,13 @@ using Kazue.Exception.MessageResource;
 
 namespace Kazue.Application.UseCases.Status.Create;
 
-public class CreateStatusUseCase : ICreateStatusUseCase
+public class CreateStatusUseCase(
+    ICreateStatusRepository createStatusRepository,
+    IReadStatusRepository readStatusRepository) 
+    : ICreateStatusUseCase
 {
-    private readonly ICreateStatusRepository _createStatusRepository;
-    private readonly IReadStatusRepository _readStatusRepository;
-
-    public CreateStatusUseCase(
-        ICreateStatusRepository createStatusRepository,
-        IReadStatusRepository readStatusRepository)
-    {
-        _createStatusRepository = createStatusRepository;
-        _readStatusRepository = readStatusRepository;
-    }
+    private readonly ICreateStatusRepository _createStatusRepository = createStatusRepository;
+    private readonly IReadStatusRepository _readStatusRepository = readStatusRepository;
 
     public async Task<StatusResponse> ExecuteAsync(StatusRequest req)
     {

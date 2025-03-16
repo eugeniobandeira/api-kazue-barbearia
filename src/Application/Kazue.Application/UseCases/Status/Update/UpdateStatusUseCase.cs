@@ -21,7 +21,7 @@ public class UpdateStatusUseCase : IUpdateStatusUseCase
         _readStatusRepository = readStatusRepository;
     }
 
-    public async Task<StatusResponse> ExecuteAsync(long id, StatusRequest req)
+    public async Task<StatusResponse> ExecuteAsync(Guid id, StatusRequest req)
     {
         await Validate(id, req);
 
@@ -32,7 +32,7 @@ public class UpdateStatusUseCase : IUpdateStatusUseCase
         return StatusAdapter.FromEntityToResponse(response);
     }
 
-    private async Task Validate(long id, StatusRequest req)
+    private async Task Validate(Guid id, StatusRequest req)
     {
         var result = new StatusValidator().Validate(req);
 

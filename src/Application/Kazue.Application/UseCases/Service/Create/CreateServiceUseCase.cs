@@ -8,18 +8,13 @@ using Kazue.Exception.MessageResource;
 
 namespace Kazue.Application.UseCases.Service.Create;
 
-public class CreateServiceUseCase : ICreateServiceUseCase
+public class CreateServiceUseCase(
+    ICreateServiceRepository createServiceRepository,
+    IReadServiceRepository readServiceRepository) 
+    : ICreateServiceUseCase
 {
-    private readonly ICreateServiceRepository _createServiceRepository;
-    private readonly IReadServiceRepository _readServiceRepository;
-
-    public CreateServiceUseCase(
-        ICreateServiceRepository createServiceRepository,
-        IReadServiceRepository readServiceRepository)
-    {
-        _createServiceRepository = createServiceRepository;
-        _readServiceRepository = readServiceRepository;
-    }
+    private readonly ICreateServiceRepository _createServiceRepository = createServiceRepository;
+    private readonly IReadServiceRepository _readServiceRepository = readServiceRepository;
 
     public async Task<ServiceResponse> ExecuteAsync(ServiceRequest req)
     {

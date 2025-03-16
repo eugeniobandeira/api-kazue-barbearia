@@ -9,7 +9,7 @@ namespace Kazue.Application.Adapter.Queue;
 
 public static class QueueAdapter
 {
-    public static QueueResponse FromEntityToResponse(QueueEntity entity, List<ServiceEntity> services)
+    public static QueueResponse FromEntityToResponse(QueueEntity entity, IList<ServiceEntity> services)
     {
         if (entity is null)
             throw new ArgumentNullException("Cannot adapt a null entity to response", nameof(entity));
@@ -58,12 +58,31 @@ public static class QueueAdapter
         return response;
     }
 
-    public static IList<QueueResponse> FromEntityListToEntityResponse(IEnumerable<QueueEntity>? entityList, IEnumerable<ServiceEntity>? services)
+    public static IList<QueueResponse> FromEntityListToEntityResponse(
+        IEnumerable<QueueEntity>? entityList, 
+        IEnumerable<ServiceEntity>? servicesList)
     {
         if (entityList is null)
             throw new ArgumentNullException("Cannot adapt a null entity to response", nameof(entityList));
 
-        List<QueueResponse> response = new();
+        List<QueueResponse> response = [];
+
+        var services = servicesList;
+
+        var servicesResponse = new List<ServiceResponse>();
+
+        foreach (var srv in services)
+        {
+            var result = new ServiceResponse()
+            {
+                Id = srv.ID_SERVICE,
+                Code = srv.CD_SERVICE,
+                Description = srv.DS_SERVICE,
+                Price = srv.VL_PRICE
+            };
+
+            servicesResponse.Add(result);
+        }
 
         foreach (var entity in entityList)
         {
@@ -95,11 +114,9 @@ public static class QueueAdapter
                     Description = entity.DS_STATUS
                 },
 
-
-                Services = new List<ServiceResponse>() 
-                {
-                }
+                Services = servicesResponse
             });
+
         }
 
         return response;

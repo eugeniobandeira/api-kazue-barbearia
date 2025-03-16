@@ -1,6 +1,6 @@
 ﻿using Kazue.Application.Adapter.User;
 using Kazue.Domain.Interfaces.Infrastructure.Repository.User;
-using Kazue.Domain.Response.Person;
+using Kazue.Domain.Response.User;
 using Kazue.Exception.ExceptionBase;
 using Kazue.Exception.MessageResource;
 
@@ -15,7 +15,7 @@ public class GetUserByIdUseCase : IGetUserByIdUseCase
         _readUserRepository = readUserRepository;
     }
 
-    public async Task<UserResponse> ExecuteAsync(long id)
+    public async Task<UserResponse> ExecuteAsync(Guid id)
     {
         var repositoryResponse = await _readUserRepository.GetById(id);
 

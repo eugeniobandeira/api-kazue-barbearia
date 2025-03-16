@@ -2,5 +2,5 @@
 
 public interface IDeleteUserUseCase
 {
-    Task ExecuteAsync();
+    Task ExecuteAsync(Guid id);
 }

@@ -4,7 +4,6 @@ using Kazue.Domain.Request.User;
 using Kazue.Domain.Response.User;
 using Kazue.Exception.ExceptionBase;
 using Kazue.Exception.MessageResource;
-using Kazue.Infrastructure.Repository.User;
 
 namespace Kazue.Application.UseCases.User.Update;
 
@@ -23,7 +22,7 @@ public class UpdateUserUseCase : IUpdateUserUseCase
         _readUserRepository = readUserRepository;
         _updateUserRepository = updateUserRepository;
     }
-    public async Task<UserProfileResponse> ExecuteAsync(UpdateUserRequest req)
+    public async Task<UserProfileResponse> ExecuteAsync(Guid id, UpdateUserRequest req)
     {
         var loggedUser = await _loggedUser.GetAsync();
 
@@ -37,7 +36,7 @@ public class UpdateUserUseCase : IUpdateUserUseCase
         user.DS_EMAIL = req.Email;
         user.DS_PHONE = req.Phone;
 
-        _updateUserRepository.Update(user);
+        await _updateUserRepository.UpdateAsync(id, req);
 
         return new UserProfileResponse
         {

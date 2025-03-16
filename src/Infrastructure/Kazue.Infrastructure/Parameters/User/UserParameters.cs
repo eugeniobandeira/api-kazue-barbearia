@@ -5,8 +5,7 @@ using System.Data;
 
 namespace Kazue.Infrastructure.Parameters.User;
 
-public class UserParameters : 
-    IUserParameter
+public class UserParameters : IUserParameter
 {
     public MySqlDynamicParameters CreateParameters(CreateUserRequest req)
     {
@@ -24,11 +23,11 @@ public class UserParameters :
         return parameters;
     }
 
-    public MySqlDynamicParameters GetByIdParameters(long id)
+    public MySqlDynamicParameters GetByIdParameters(Guid id)
     {
         var parameters = new MySqlDynamicParameters();
 
-        parameters.Add("P_ID_USER", MySqlDbType.Int32, ParameterDirection.Input, id);
+        parameters.Add("P_ID_USER", MySqlDbType.Guid, ParameterDirection.Input, id);
 
         return parameters;
     }
@@ -42,11 +41,11 @@ public class UserParameters :
         return parameters;
     }
 
-    public MySqlDynamicParameters UpdateParameters(long id, UpdateUserRequest req)
+    public MySqlDynamicParameters UpdateParameters(Guid id, UpdateUserRequest req)
     {
         var parameters = new MySqlDynamicParameters();
 
-        parameters.Add("P_ID_USER", MySqlDbType.Int64, ParameterDirection.Input, id);
+        parameters.Add("P_ID_USER", MySqlDbType.Guid, ParameterDirection.Input, id);
         parameters.Add("P_DS_NAME", MySqlDbType.String, ParameterDirection.Input, req.Name);
         parameters.Add("P_DS_SURNAME", MySqlDbType.String, ParameterDirection.Input, req.Surname);
         parameters.Add("P_DS_NICKNAME", MySqlDbType.String, ParameterDirection.Input, req.Nickname);
@@ -67,6 +66,25 @@ public class UserParameters :
         parameters.Add("P_DS_PHONE", MySqlDbType.String, ParameterDirection.Input, req.Phone);
         parameters.Add("P_PAGE", MySqlDbType.Int64, ParameterDirection.Input, req.Page);
         parameters.Add("P_PAGE_SIZE", MySqlDbType.Int64, ParameterDirection.Input, req.PageSize);
+
+        return parameters;
+    }
+
+    public MySqlDynamicParameters DeleteParameters(Guid id)
+    {
+        var parameters = new MySqlDynamicParameters();
+
+        parameters.Add("P_ID_USER", MySqlDbType.Guid, ParameterDirection.Input, id);
+
+        return parameters;
+    }
+
+    public MySqlDynamicParameters ChangePasswordParameters(Guid id, ChangePasswordRequest req)
+    {
+        var parameters = new MySqlDynamicParameters();
+
+        parameters.Add("P_ID_USER", MySqlDbType.Guid, ParameterDirection.Input, id);
+        parameters.Add("P_DS_PASSWORD", MySqlDbType.String, ParameterDirection.Input, req.NewPassword);
 
         return parameters;
     }

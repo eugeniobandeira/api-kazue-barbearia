@@ -4,8 +4,8 @@ namespace Kazue.Domain.Request.Queue;
 
 public class GetQueueRequest
 {
-    public long IdCustomer { get; set; }
-    public long IdBarber { get; set; }
+    public Guid IdCustomer { get; set; }
+    public Guid IdBarber { get; set; }
     public long CdService { get; set; }
 
     [Required]

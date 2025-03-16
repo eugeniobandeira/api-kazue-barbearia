@@ -8,18 +8,14 @@ using System.Security.Claims;
 
 namespace Kazue.Infrastructure.Service.LoggedUser;
 
-internal class LoggedUser : ILoggedUser
+internal class LoggedUser(
+    IKazueConnection connection,
+    IReadUserRepository readUserRepository,
+    ITokenProvider tokenProvider) : ILoggedUser
 {
-    private readonly IKazueConnection _connection;
-    private readonly IReadUserRepository _readUserRepository;
-    private readonly ITokenProvider _tokenProvider;
-
-    public LoggedUser(IKazueConnection connection, IReadUserRepository readUserRepository, ITokenProvider tokenProvider)
-    {
-        _connection = connection;
-        _readUserRepository = readUserRepository;
-        _tokenProvider = tokenProvider;
-    }
+    private readonly IKazueConnection _connection = connection;
+    private readonly IReadUserRepository _readUserRepository = readUserRepository;
+    private readonly ITokenProvider _tokenProvider = tokenProvider;
 
     public async Task<UserEntity> GetAsync()
     {
@@ -29,7 +25,7 @@ internal class LoggedUser : ILoggedUser
         var jwtSecurityToken = tokenHandler.ReadJwtToken(token);
         var identifierClaim = jwtSecurityToken.Claims.FirstOrDefault(claim => claim.Type == ClaimTypes.Sid)?.Value;
 
-        if (string.IsNullOrEmpty(identifierClaim) || !int.TryParse(identifierClaim, out int userId))
+        if (string.IsNullOrEmpty(identifierClaim) || !Guid.TryParse(identifierClaim, out Guid userId))
             return null;
 
         await using var connection = _connection.GetConnection();

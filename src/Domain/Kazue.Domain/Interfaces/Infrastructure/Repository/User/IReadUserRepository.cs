@@ -6,6 +6,6 @@ namespace Kazue.Domain.Interfaces.Infrastructure.Repository.User;
 public interface IReadUserRepository
 {
     Task<UserEntity?> GetByEmail(string email);
-    Task<UserEntity?> GetById(long id);
+    Task<UserEntity?> GetById(Guid id);
     Task<List<UserEntity>> GetAll(GetUserRequest req);
 }

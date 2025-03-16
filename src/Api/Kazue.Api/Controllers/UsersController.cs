@@ -6,7 +6,6 @@ using Kazue.Application.UseCases.User.GetById;
 using Kazue.Application.UseCases.User.Update;
 using Kazue.Domain.Request.User;
 using Kazue.Domain.Response.Error;
-using Kazue.Domain.Response.Person;
 using Kazue.Domain.Response.Shared;
 using Kazue.Domain.Response.User;
 using Microsoft.AspNetCore.Authorization;
@@ -55,14 +54,14 @@ public class UsersController : ControllerBase
     [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status404NotFound)]
     public async Task<IActionResult> GetByIdAsync(
         [FromServices] IGetUserByIdUseCase useCase,
-        long id)
+        [FromRoute] Guid id)
     {
         var response = await useCase.ExecuteAsync(id);
 
-        if (response.Id > 0)
-            return Ok(response);
+        if (response.Id == null)
+            return BadRequest();
 
-        return BadRequest();
+        return Ok(response);
     }
 
     /// <summary>
@@ -80,17 +79,18 @@ public class UsersController : ControllerBase
     {
         var response = await useCase.ExecuteAsync(req);
 
-        if (response.Response.Any())
+        if (response.Response.Count != 0)
             return Ok(response);
 
         return BadRequest();
     }
 
     /// <summary>
-    /// UpdateAsync users data profile
+    /// Update user profile
     /// </summary>
     /// <param name="useCase"></param>
     /// <param name="req"></param>
+    /// <param name="id"></param>
     /// <returns></returns>
     [HttpPut]
     [Route("{id}")]
@@ -100,18 +100,19 @@ public class UsersController : ControllerBase
     public async Task<IActionResult> UpdateAsync(
         [FromServices] IUpdateUserUseCase useCase,
         [FromBody] UpdateUserRequest req,
-        long id)
+        [FromRoute] Guid id)
     {
-        var response = await useCase.ExecuteAsync(req);
+        var response = await useCase.ExecuteAsync(id, req);
 
         return Ok(response);
     }
 
     /// <summary>
-    /// UpdateAsync users password
+    /// Update user password
     /// </summary>
     /// <param name="useCase"></param>
     /// <param name="req"></param>
+    /// <param name="id"></param>
     /// <returns></returns>
     [HttpPut("change-password")]
     [Authorize]
@@ -119,9 +120,10 @@ public class UsersController : ControllerBase
     [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> ChangePasswordAsync(
         [FromServices] IChangePasswordUserUseCase useCase,
-        [FromBody] ChangePasswordRequest req)
+        [FromBody] ChangePasswordRequest req,
+        [FromRoute] Guid id)
     {
-        await useCase.ExecuteAsync(req);
+        await useCase.ExecuteAsync(id, req);
 
         return NoContent();
     }
@@ -138,9 +140,9 @@ public class UsersController : ControllerBase
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     public async Task<IActionResult> DeleteAsync(
         [FromServices] IDeleteUserUseCase useCase,
-        long id)
+        [FromRoute] Guid id)
     {
-        await useCase.ExecuteAsync();
+        await useCase.ExecuteAsync(id);
         return NoContent();
     }
 

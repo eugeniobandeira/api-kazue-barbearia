@@ -4,21 +4,18 @@ using Kazue.Domain.Interfaces.Service.LoggedUser;
 
 namespace Kazue.Application.UseCases.User.Delete;
 
-public class DeleteUserUseCase : IDeleteUserUseCase
+public class DeleteUserUseCase(
+    ILoggedUser loggedUser, 
+    IDeleteUserRepository deleteUserRepository) 
+    : IDeleteUserUseCase
 {
-    private readonly ILoggedUser _loggedUser;
-    private readonly IDeleteUserRepository _deleteUserRepository;
+    private readonly ILoggedUser _loggedUser = loggedUser;
+    private readonly IDeleteUserRepository _deleteUserRepository = deleteUserRepository;
 
-    public DeleteUserUseCase(ILoggedUser loggedUser, IDeleteUserRepository deleteUserRepository)
-    {
-        _loggedUser = loggedUser;
-        _deleteUserRepository = deleteUserRepository;
-    }
-
-    public async Task ExecuteAsync()
+    public async Task ExecuteAsync(Guid id)
     {
         var user = await _loggedUser.GetAsync();
 
-        await _deleteUserRepository.DeleteAsync(user);
+        await _deleteUserRepository.DeleteAsync(user.ID_USER);
     }
 }

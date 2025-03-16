@@ -6,7 +6,6 @@ using Kazue.Domain.Interfaces.Service.LoggedUser;
 using Kazue.Domain.Request.User;
 using Kazue.Exception.ExceptionBase;
 using Kazue.Exception.MessageResource;
-using Kazue.Infrastructure.Repository.User;
 
 namespace Kazue.Application.UseCases.User.ChangePassword;
 
@@ -29,7 +28,7 @@ public class ChangePasswordUserUseCase : IChangePasswordUserUseCase
         _readUserRepository = readUserRepository;
     }
 
-    public async Task ExecuteAsync(ChangePasswordRequest req)
+    public async Task ExecuteAsync(Guid id, ChangePasswordRequest req)
     {
         var loggedUser = await _loggedUser.GetAsync();
 
@@ -38,7 +37,7 @@ public class ChangePasswordUserUseCase : IChangePasswordUserUseCase
         var user = await _readUserRepository.GetById(loggedUser.ID_USER);
         user.DS_PASSWORD = _passwordEncrypter.Encrypt(req.NewPassword);
 
-        _updateUserRepository.Update(user);
+        await _updateUserRepository.ChangePasswordAsync(id, req);
     }
 
     private void Validate(ChangePasswordRequest req, UserEntity loggedUser)

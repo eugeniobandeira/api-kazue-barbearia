@@ -2,5 +2,5 @@
 
 public interface IDeleteQueueUseCase
 {
-    Task ExecuteAsync(long id);
+    Task ExecuteAsync(Guid id);
 }

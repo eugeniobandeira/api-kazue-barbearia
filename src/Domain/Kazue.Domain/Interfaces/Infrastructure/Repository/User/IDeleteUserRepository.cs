@@ -4,5 +4,5 @@ namespace Kazue.Domain.Interfaces.Infrastructure.Repository.User;
 
 public interface IDeleteUserRepository
 {
-    Task DeleteAsync(UserEntity userEntity);
+    Task DeleteAsync(Guid id);
 }

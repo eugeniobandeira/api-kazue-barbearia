@@ -6,14 +6,10 @@ using Kazue.Domain.Response.Shared;
 
 namespace Kazue.Application.UseCases.Service.Get;
 
-public class GetServiceUseCase : IGetServiceUseCase
+public class GetServiceUseCase(IReadServiceRepository readServiceRepository) 
+    : IGetServiceUseCase
 {
-    private readonly IReadServiceRepository _readServiceRepository;
-
-    public GetServiceUseCase(IReadServiceRepository readServiceRepository)
-    {
-        this._readServiceRepository = readServiceRepository;
-    }
+    private readonly IReadServiceRepository _readServiceRepository = readServiceRepository;
 
     public async Task<ListApiResponse<ServiceResponse>> ExecuteAsync(GetServiceRequest req)
     {
@@ -30,8 +26,7 @@ public class GetServiceUseCase : IGetServiceUseCase
             }
         }
 
-        apiResponse.ResultCount = listApiResponse.Count();
-        //apiResponse.RowsCount = listApiResponse.First().QT_REGISTRY;
+        apiResponse.ResultCount = listApiResponse.Count;
 
         return apiResponse;
     }

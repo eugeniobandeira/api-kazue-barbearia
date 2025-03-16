@@ -1,42 +1,100 @@
-﻿using Kazue.Domain.Entities.Service;
+﻿using Dapper;
+using Kazue.Domain.Entities.Service;
+using Kazue.Domain.Interfaces.Infrastructure.Connection;
 using Kazue.Domain.Interfaces.Infrastructure.Repository.Service;
 using Kazue.Domain.Request.Service;
+using Kazue.Infrastructure.Parameters.Service;
+using Kazue.Infrastructure.Queries.Service;
+using System.Data;
 
 namespace Kazue.Infrastructure.Repository.Service;
 
-public class ServiceRepository :
+public class ServiceRepository(
+    IServiceParameter serviceParameter,
+    IKazueConnection connection) :
+
     ICreateServiceRepository,
     IReadServiceRepository,
     IDeleteServiceRepository,
     IUpdateServiceRepository
 {
-    public Task<ServiceEntity> Create(ServiceRequest req)
+    private readonly IServiceParameter _serviceParameter = serviceParameter;
+    private readonly IKazueConnection _connection = connection;
+
+    public async Task<ServiceEntity> Create(ServiceRequest req)
     {
-        throw new NotImplementedException();
+        await using var connection = _connection.GetConnection();
+
+        var parameters = _serviceParameter.CreateParameters(req);
+
+        var id = await connection.QueryFirstOrDefaultAsync<Guid>(
+            sql: ServiceQuery.SERVICE_SP_CREATE,
+            param: parameters,
+            commandType: CommandType.StoredProcedure
+        );
+
+        return await GetById(id);
     }
 
-    public Task<ServiceEntity?> GetById(long id)
+    public async Task<ServiceEntity?> GetById(Guid id)
     {
-        throw new NotImplementedException();
+        await using var connection = _connection.GetConnection();
+
+        var parameters = _serviceParameter.GetByIdParameters(id);
+
+        return (await connection.QueryAsync<ServiceEntity>(
+            sql: ServiceQuery.SERVICE_SP_GET_BY_ID,
+            param: parameters,
+            commandType: CommandType.StoredProcedure)).FirstOrDefault();
     }
 
-    public Task<ServiceEntity?> GetByCodeOrDescription(ServiceRequest req)
+    public async Task<ServiceEntity?> GetByCodeOrDescription(ServiceRequest req)
     {
-        throw new NotImplementedException();
+        await using var connection = _connection.GetConnection();
+
+        var parameters = _serviceParameter.GetByCodeOrDescriptionParameters(req);
+
+        return (await connection.QueryAsync<ServiceEntity>(
+            sql: ServiceQuery.SERVICE_SP_GET_BY_CODE_OR_DESCRIPTION,
+            param: parameters,
+            commandType: CommandType.StoredProcedure)).FirstOrDefault();
     }
 
-    public Task<List<ServiceEntity>> GetAll(GetServiceRequest req)
+    public async Task<List<ServiceEntity>> GetAll(GetServiceRequest req)
     {
-        throw new NotImplementedException();
+        await using var connection = _connection.GetConnection();
+
+        var parameters = _serviceParameter.GetAllParameters(req);
+
+        return [.. (await connection.QueryAsync<ServiceEntity>(
+            sql: ServiceQuery.SERVICE_SP_GET,
+            param: parameters,
+            commandType: CommandType.StoredProcedure))];
     }
 
-    public Task DeleteAsync(ServiceEntity serviceEntity)
+    public async Task DeleteAsync(ServiceEntity serviceEntity)
     {
-        throw new NotImplementedException();
+        await using var connection = _connection.GetConnection();
+
+        var parameters = _serviceParameter.DeleteParameters(serviceEntity.ID_SERVICE);
+
+        await connection.ExecuteAsync(
+            sql: ServiceQuery.SERVICE_SP_DELETE,
+            param: parameters,
+            commandType: CommandType.StoredProcedure
+        );
     }
 
-    public Task Update(long id, ServiceRequest req)
+    public async Task Update(Guid id, ServiceRequest req)
     {
-        throw new NotImplementedException();
+        await using var connection = _connection.GetConnection();
+
+        var parameters = _serviceParameter.UpdateParameters(id, req);
+
+        await connection.ExecuteAsync(
+            sql: ServiceQuery.SERVICE_SP_UPDATE,
+            param: parameters,
+            commandType: CommandType.StoredProcedure
+        );
     }
 }

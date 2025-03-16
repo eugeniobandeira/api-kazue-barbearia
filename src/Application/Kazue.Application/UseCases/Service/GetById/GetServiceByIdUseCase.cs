@@ -6,21 +6,15 @@ using Kazue.Exception.MessageResource;
 
 namespace Kazue.Application.UseCases.Service.GetById;
 
-public class GetServiceByIdUseCase : IGetServiceByIdUseCase
+public class GetServiceByIdUseCase(IReadServiceRepository readServiceRepository) 
+    : IGetServiceByIdUseCase
 {
-    private readonly IReadServiceRepository _readServiceRepository;
+    private readonly IReadServiceRepository _readServiceRepository = readServiceRepository;
 
-    public GetServiceByIdUseCase(IReadServiceRepository readServiceRepository)
+    public async Task<ServiceResponse> ExecuteAsync(Guid id)
     {
-        _readServiceRepository = readServiceRepository;
-    }
-
-    public async Task<ServiceResponse> ExecuteAsync(long id)
-    {
-        var repositoryResponse = await _readServiceRepository.GetById(id);
-
-        if (repositoryResponse is null)
-            throw new NotFoundException(ErrorMessageResource.NOT_FOUND_EXCEPTION);
+        var repositoryResponse = await _readServiceRepository.GetById(id) ?? 
+                                 throw new NotFoundException(ErrorMessageResource.NOT_FOUND_EXCEPTION);
 
         return ServiceAdapter.FromEntityToResponse(repositoryResponse);
     }

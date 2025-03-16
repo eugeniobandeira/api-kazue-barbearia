@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Kazue.Api.Controllers
 {
+    /// <summary>
+    /// Controller responsible for manage login
+    /// </summary>
     [Route("v1/api/login")]
     [ApiController]
     public class LoginController : ControllerBase

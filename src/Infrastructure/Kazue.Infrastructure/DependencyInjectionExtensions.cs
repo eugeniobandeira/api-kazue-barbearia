@@ -1,4 +1,5 @@
 ﻿using Kazue.Domain.Interfaces.Infrastructure.Connection;
+using Kazue.Domain.Interfaces.Infrastructure.Repository.Category;
 using Kazue.Domain.Interfaces.Infrastructure.Repository.Queue;
 using Kazue.Domain.Interfaces.Infrastructure.Repository.Service;
 using Kazue.Domain.Interfaces.Infrastructure.Repository.Status;
@@ -7,9 +8,12 @@ using Kazue.Domain.Interfaces.Security.Cryptography;
 using Kazue.Domain.Interfaces.Security.Token;
 using Kazue.Domain.Interfaces.Service.LoggedUser;
 using Kazue.Infrastructure.Connection;
+using Kazue.Infrastructure.Parameters.Category;
+using Kazue.Infrastructure.Parameters.Queue;
 using Kazue.Infrastructure.Parameters.Service;
 using Kazue.Infrastructure.Parameters.Status;
 using Kazue.Infrastructure.Parameters.User;
+using Kazue.Infrastructure.Repository.Category;
 using Kazue.Infrastructure.Repository.Queue;
 using Kazue.Infrastructure.Repository.Service;
 using Kazue.Infrastructure.Repository.Status;
@@ -53,6 +57,8 @@ public static class DependencyInjectionExtensions
         services.AddScoped<IUserParameter, UserParameters>();
         services.AddScoped<IStatusParameter, StatusParameter>();
         services.AddScoped<IServiceParameter, ServiceParameter>();
+        services.AddScoped<IQueueParameter, QueueParameter>();
+        services.AddScoped<ICategoryParameter, CategoryParameter>();
     }
 
     private static void AddRepositories(IServiceCollection services)
@@ -76,5 +82,10 @@ public static class DependencyInjectionExtensions
         services.AddScoped<IDeleteQueueRepository, QueueRepository>();
         services.AddScoped<IReadQueueRepository, QueueRepository>();
         services.AddScoped<IUpdateQueueRepository, QueueRepository>();
+
+        services.AddScoped<ICreateCategoryRepository, CategoryRepository>();
+        services.AddScoped<IDeleteCategoryRepository, CategoryRepository>();
+        services.AddScoped<IReadCategoryRepository, CategoryRepository>();
+        services.AddScoped<IUpdateCategoryRepository, CategoryRepository>();
     }
 }

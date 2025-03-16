@@ -5,8 +5,10 @@ namespace Kazue.Infrastructure.Parameters.User;
 public interface IUserParameter
 {
     MySqlDynamicParameters CreateParameters(CreateUserRequest req);
-    MySqlDynamicParameters GetByIdParameters(long id);
+    MySqlDynamicParameters GetByIdParameters(Guid id);
     MySqlDynamicParameters GetByEmailParameters(string email);
     MySqlDynamicParameters GetAllParameters(GetUserRequest req);
-    MySqlDynamicParameters UpdateParameters(long id, UpdateUserRequest req);
+    MySqlDynamicParameters UpdateParameters(Guid id, UpdateUserRequest req);
+    MySqlDynamicParameters ChangePasswordParameters(Guid id, ChangePasswordRequest req);
+    MySqlDynamicParameters DeleteParameters(Guid id);
 }

@@ -4,5 +4,5 @@ namespace Kazue.Application.UseCases.User.ChangePassword;
 
 public interface IChangePasswordUserUseCase
 {
-    Task ExecuteAsync(ChangePasswordRequest req);
+    Task ExecuteAsync(Guid id, ChangePasswordRequest req);
 }

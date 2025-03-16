@@ -1,29 +1,25 @@
 ﻿using Dapper;
 using Kazue.Domain.Entities.User;
 using Kazue.Domain.Interfaces.Infrastructure.Connection;
+using Kazue.Domain.Interfaces.Infrastructure.Repository.User;
 using Kazue.Domain.Request.User;
 using Kazue.Infrastructure.Parameters.User;
 using Kazue.Infrastructure.Queries.User;
 using System.Data;
-using Kazue.Domain.Interfaces.Infrastructure.Repository.User;
-using Kazue.Domain.Response.Shared;
 
 namespace Kazue.Infrastructure.Repository.User;
 
-public class UserRepository : 
+public class UserRepository(
+    IUserParameter userParameter, 
+    IKazueConnection connection) : 
+
     ICreateUserRepository,
     IReadUserRepository,
     IUpdateUserRepository,
     IDeleteUserRepository
 {
-    private readonly IUserParameter _userParameter;
-    private readonly IKazueConnection _connection;
-
-    public UserRepository(IUserParameter userParameter, IKazueConnection connection)
-    {
-        _userParameter = userParameter;
-        _connection = connection;
-    }
+    private readonly IUserParameter _userParameter = userParameter;
+    private readonly IKazueConnection _connection = connection;
 
     public async Task<UserEntity> Create(CreateUserRequest req)
     {
@@ -31,7 +27,7 @@ public class UserRepository :
 
         var parameters = _userParameter.CreateParameters(req);
 
-        var id = await connection.QueryFirstOrDefaultAsync<int>(
+        var id = await connection.QueryFirstOrDefaultAsync<Guid>(
             sql: UserQuery.USER_SP_CREATE,
             param: parameters,
             commandType: CommandType.StoredProcedure
@@ -53,7 +49,7 @@ public class UserRepository :
             commandType: CommandType.StoredProcedure)).FirstOrDefault();
     }
 
-    public async Task<UserEntity?> GetById(long id)
+    public async Task<UserEntity?> GetById(Guid id)
     {
         await using var connection = _connection.GetConnection();
 
@@ -65,14 +61,17 @@ public class UserRepository :
             commandType: CommandType.StoredProcedure)).FirstOrDefault();
     }
 
-    public void Update(UserEntity req)
+    public async Task DeleteAsync(Guid id)
     {
-        throw new NotImplementedException();
-    }
+        await using var connection = _connection.GetConnection();
 
-    public Task DeleteAsync(UserEntity userEntity)
-    {
-        throw new NotImplementedException();
+        var parameters = _userParameter.DeleteParameters(id);
+
+        await connection.ExecuteAsync(
+            sql: UserQuery.USER_SP_DELETE,
+            param: parameters,
+            commandType: CommandType.StoredProcedure
+        );
     }
 
     public async Task<List<UserEntity>> GetAll(GetUserRequest req)
@@ -81,9 +80,35 @@ public class UserRepository :
 
         var parameters = _userParameter.GetAllParameters(req);
 
-        return (await connection.QueryAsync<UserEntity>(
+        return [.. (await connection.QueryAsync<UserEntity>(
             sql: UserQuery.USER_SP_GET,
             param: parameters,
-            commandType: CommandType.StoredProcedure)).ToList();
+            commandType: CommandType.StoredProcedure))];
+    }
+
+    public async Task UpdateAsync(Guid id, UpdateUserRequest req)
+    {
+        await using var connection = _connection.GetConnection();
+
+        var parameters = _userParameter.UpdateParameters(id, req);
+
+        await connection.ExecuteAsync(
+            sql: UserQuery.USER_SP_UPDATE,
+            param: parameters,
+            commandType: CommandType.StoredProcedure
+        );
+    }
+
+    public async Task ChangePasswordAsync(Guid id, ChangePasswordRequest req)
+    {
+        await using var connection = _connection.GetConnection();
+
+        var parameters = _userParameter.ChangePasswordParameters(id, req);
+
+        await connection.ExecuteAsync(
+            sql: UserQuery.USER_SP_UPDATE_PASSWORD,
+            param: parameters,
+            commandType: CommandType.StoredProcedure
+        );
     }
 }

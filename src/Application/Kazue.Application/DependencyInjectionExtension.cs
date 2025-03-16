@@ -1,4 +1,14 @@
-﻿using Kazue.Application.UseCases.Login.DoLogin;
+﻿using Kazue.Application.UseCases.Category.Create;
+using Kazue.Application.UseCases.Category.Delete;
+using Kazue.Application.UseCases.Category.Get;
+using Kazue.Application.UseCases.Category.GetById;
+using Kazue.Application.UseCases.Category.Update;
+using Kazue.Application.UseCases.Login.DoLogin;
+using Kazue.Application.UseCases.Queue.Create;
+using Kazue.Application.UseCases.Queue.Delete;
+using Kazue.Application.UseCases.Queue.Get;
+using Kazue.Application.UseCases.Queue.GetById;
+using Kazue.Application.UseCases.Queue.Update;
 using Kazue.Application.UseCases.Service.Create;
 using Kazue.Application.UseCases.Service.Delete;
 using Kazue.Application.UseCases.Service.Get;
@@ -48,6 +58,17 @@ public static class DependencyInjectionExtension
         services.AddScoped<IGetServiceUseCase, GetServiceUseCase>();
         services.AddScoped<IGetServiceByIdUseCase, GetServiceByIdUseCase>();
         services.AddScoped<IUpdateServiceUseCase, UpdateServiceUseCase>();
-    }
 
+        services.AddScoped<ICreateQueueUseCase, CreateQueueUseCase>();
+        services.AddScoped<IDeleteQueueUseCase, DeleteQueueUseCase>();
+        services.AddScoped<IGetQueueUseCase, GetQueueUseCase>();
+        services.AddScoped<IGetByIdQueueUseCase, GetByIdQueueUseCase>();
+        services.AddScoped<IUpdateQueueUseCase, UpdateQueueUseCase>();
+
+        services.AddScoped<ICreateCategoryUseCase, CreateCategoryUseCase>();
+        services.AddScoped<IDeleteCategoryUseCase, DeleteCategoryUseCase>();
+        services.AddScoped<IGetCategoryUseCase, GetCategoryUseCase>();
+        services.AddScoped<IGetCategoryByIdUseCase, GetCategoryByIdUseCase>();
+        services.AddScoped<IUpdateCategoryUseCase, UpdateCategoryUseCase>();
+    }
 }
