@@ -2,5 +2,5 @@
 
 public interface IDeleteCategoryRepository
 {
-    Task DeleteAsync(Guid id);
+    Task DeleteAsync(long id);
 }

@@ -11,6 +11,7 @@ public class UserResponse
     public string Role { get; set; } = string.Empty;
     public DateTime DateOfBirth { get; set; }
     public DateTime DateOfRegistry { get; set; }
-    public Guid IdStatus { get; set; }
+    public long IdStatus { get; set; }
+    public string StatusCode { get; set; } = string.Empty;
     public string StatusDescription { get; set; } = string.Empty;
 }

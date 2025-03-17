@@ -2,7 +2,7 @@
 
 public class QueueEntity
 {
-    public Guid ID_QUEUE { get; set; }
+    public long ID_QUEUE { get; set; }
     public DateTime DT_CHECKIN_AT { get; set; }
     public DateTime? DT_CHECKOUT_AT { get; set; }
     public decimal VL_AMOUNT { get; set; }
@@ -17,7 +17,7 @@ public class QueueEntity
     public string DS_BARBER_SURNAME { get; set; } = string.Empty;
     public string? DS_BARBER_NICKNAME { get; set; } = string.Empty;
 
-    public Guid ID_STATUS { get; set; }
+    public long ID_STATUS { get; set; }
     public string CD_STATUS { get; set; } = string.Empty;
     public string DS_STATUS { get; set; } = string.Empty;
 

@@ -1,8 +1,11 @@
-﻿namespace Kazue.Domain.Response.Status;
+﻿using Kazue.Domain.Response.Shared;
+
+namespace Kazue.Domain.Response.Status;
 
 public class StatusResponse
 {
-    public Guid Id { get; set; }
+    public long Id { get; set; }
     public string Code { get; set; } = string.Empty;
     public string Description { get; set; } = string.Empty;
+    public ItemResponse Category { get; set; }
 }

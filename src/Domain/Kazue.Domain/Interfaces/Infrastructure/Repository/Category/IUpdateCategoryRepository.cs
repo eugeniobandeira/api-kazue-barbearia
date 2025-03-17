@@ -4,5 +4,5 @@ namespace Kazue.Domain.Interfaces.Infrastructure.Repository.Category;
 
 public interface IUpdateCategoryRepository
 {
-    Task UpdateAsync(Guid id, CategoryRequest req);
+    Task UpdateAsync(long id, CategoryRequest req);
 }

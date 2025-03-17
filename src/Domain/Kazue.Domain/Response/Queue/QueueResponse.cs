@@ -6,7 +6,7 @@ namespace Kazue.Domain.Response.Queue;
 
 public class QueueResponse
 {
-    public Guid Id { get; set; }
+    public long Id { get; set; }
     public DateTime DtCheckinAt { get; set; }
     public DateTime? DtCheckoutAt { get; set; }
     public decimal Amount { get; set; }

@@ -2,7 +2,11 @@
 
 public class StatusEntity
 {
-    public Guid ID_STATUS { get; set; }
+    public long ID_STATUS { get; set; }
     public string CD_STATUS { get; set; } = string.Empty;
     public string DS_STATUS { get; set; } = string.Empty;
+
+    public long ID_CATEGORY { get; set; }
+    public string CD_CATEGORY { get; set; } = string.Empty;
+    public string DS_CATEGORY { get; set; } = string.Empty;
 }

@@ -5,7 +5,7 @@ namespace Kazue.Domain.Interfaces.Infrastructure.Repository.Status;
 
 public interface IReadStatusRepository
 {
-    Task<StatusEntity?> GetById(Guid id);
+    Task<StatusEntity?> GetById(long id);
     Task<StatusEntity?> GetByCodeOrDescription(StatusRequest req);
     Task<List<StatusEntity>> GetAll(GetStatusRequest req);
 }

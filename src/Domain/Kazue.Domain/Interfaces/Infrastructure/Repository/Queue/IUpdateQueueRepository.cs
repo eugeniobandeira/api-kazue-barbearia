@@ -4,5 +4,5 @@ namespace Kazue.Domain.Interfaces.Infrastructure.Repository.Queue;
 
 public interface IUpdateQueueRepository
 {
-    Task UpdateAsync(Guid id, QueueRequest req);
+    Task UpdateAsync(long id, QueueRequest req);
 }
