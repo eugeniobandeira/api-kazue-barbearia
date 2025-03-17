@@ -18,11 +18,11 @@ public class QueueParameter : IQueueParameter
         return parameters;
     }
 
-    public MySqlDynamicParameters GetByIdParameters(Guid id)
+    public MySqlDynamicParameters GetByIdParameters(long id)
     {
         var parameters = new MySqlDynamicParameters();
 
-        parameters.Add("P_ID_QUEUE", MySqlDbType.Guid, ParameterDirection.Input, id);
+        parameters.Add("P_ID_QUEUE", MySqlDbType.Int64, ParameterDirection.Input, id);
 
         return parameters;
     }
@@ -49,20 +49,20 @@ public class QueueParameter : IQueueParameter
         return parameters;
     }
 
-    public MySqlDynamicParameters DeleteParameters(Guid id)
+    public MySqlDynamicParameters DeleteParameters(long id)
     {
         var parameters = new MySqlDynamicParameters();
 
-        parameters.Add("P_ID_QUEUE", MySqlDbType.Guid, ParameterDirection.Input, id);
+        parameters.Add("P_ID_QUEUE", MySqlDbType.Int64, ParameterDirection.Input, id);
 
         return parameters;
     }
 
-    public MySqlDynamicParameters UpdateParameters(Guid id, QueueRequest req)
+    public MySqlDynamicParameters UpdateParameters(long id, QueueRequest req)
     {
         var parameters = new MySqlDynamicParameters();
 
-        parameters.Add("P_ID_QUEUE", MySqlDbType.Guid, ParameterDirection.Input, id);
+        parameters.Add("P_ID_QUEUE", MySqlDbType.Int64, ParameterDirection.Input, id);
         parameters.Add("P_ID_BARBER", MySqlDbType.Guid, ParameterDirection.Input, req.IdBarber);
         parameters.Add("P_DS_CUSTOMER", MySqlDbType.Guid, ParameterDirection.Input, req.IdCustomer);
         parameters.Add("P_ID_SERVICES", MySqlDbType.String, ParameterDirection.Input, req.IdServices);

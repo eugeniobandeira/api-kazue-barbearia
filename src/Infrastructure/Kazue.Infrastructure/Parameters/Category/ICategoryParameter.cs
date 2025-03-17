@@ -6,9 +6,9 @@ namespace Kazue.Infrastructure.Parameters.Category;
 public interface ICategoryParameter
 {
     MySqlDynamicParameters CreateParameters(CategoryRequest req);
-    MySqlDynamicParameters UpdateParameters(Guid id, CategoryRequest req);
-    MySqlDynamicParameters GetByIdParameters(Guid id);
+    MySqlDynamicParameters UpdateParameters(long id, CategoryRequest req);
+    MySqlDynamicParameters GetByIdParameters(long id);
     MySqlDynamicParameters GetByCodeOrDescriptionParameters(CategoryRequest req);
     MySqlDynamicParameters GetAllParameters(GetCategoryRequest req);
-    MySqlDynamicParameters DeleteParameters(Guid id);
+    MySqlDynamicParameters DeleteParameters(long id);
 }

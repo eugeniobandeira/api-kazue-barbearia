@@ -27,7 +27,7 @@ public class StatusRepository(
 
         var parameters = _statusParameter.CreateParameters(req);
 
-        var id = await connection.QueryFirstOrDefaultAsync<Guid>(
+        var id = await connection.QueryFirstOrDefaultAsync<long>(
             sql: StatusQuery.STATUS_SP_CREATE,
             param: parameters,
             commandType: CommandType.StoredProcedure
@@ -36,7 +36,7 @@ public class StatusRepository(
         return await GetById(id);
     }
 
-    public async Task<StatusEntity?> GetById(Guid id)
+    public async Task<StatusEntity?> GetById(long id)
     {
         await using var connection = _connection.GetConnection();
 
@@ -86,7 +86,7 @@ public class StatusRepository(
 
     }
 
-    public async Task Update(Guid id, StatusRequest req)
+    public async Task UpdateAsync(long id, StatusRequest req)
     {
         await using var connection = _connection.GetConnection();
 

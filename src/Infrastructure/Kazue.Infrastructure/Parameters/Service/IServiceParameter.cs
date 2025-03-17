@@ -6,9 +6,9 @@ namespace Kazue.Infrastructure.Parameters.Service;
 public interface IServiceParameter
 {
     MySqlDynamicParameters CreateParameters(ServiceRequest req);
-    MySqlDynamicParameters UpdateParameters(Guid id, ServiceRequest req);
-    MySqlDynamicParameters GetByIdParameters(Guid id);
+    MySqlDynamicParameters UpdateParameters(long id, ServiceRequest req);
+    MySqlDynamicParameters GetByIdParameters(long id);
     MySqlDynamicParameters GetByCodeOrDescriptionParameters(ServiceRequest req);
     MySqlDynamicParameters GetAllParameters(GetServiceRequest req);
-    MySqlDynamicParameters DeleteParameters(Guid id);
+    MySqlDynamicParameters DeleteParameters(long id);
 }

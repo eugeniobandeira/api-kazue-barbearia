@@ -6,9 +6,9 @@ namespace Kazue.Infrastructure.Parameters.Status;
 public interface IStatusParameter
 {
     MySqlDynamicParameters CreateParameters(StatusRequest req);
-    MySqlDynamicParameters UpdateParameters(Guid id, StatusRequest req);
-    MySqlDynamicParameters GetByIdParameters(Guid id);
+    MySqlDynamicParameters UpdateParameters(long id, StatusRequest req);
+    MySqlDynamicParameters GetByIdParameters(long id);
     MySqlDynamicParameters GetByCodeOrDescriptionParameters(StatusRequest req);
     MySqlDynamicParameters GetAllParameters(GetStatusRequest req);
-    MySqlDynamicParameters DeleteParameters(Guid id);
+    MySqlDynamicParameters DeleteParameters(long id);
 }

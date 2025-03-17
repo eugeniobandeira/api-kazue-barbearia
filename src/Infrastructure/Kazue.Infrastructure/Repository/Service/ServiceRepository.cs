@@ -27,7 +27,7 @@ public class ServiceRepository(
 
         var parameters = _serviceParameter.CreateParameters(req);
 
-        var id = await connection.QueryFirstOrDefaultAsync<Guid>(
+        var id = await connection.QueryFirstOrDefaultAsync<int>(
             sql: ServiceQuery.SERVICE_SP_CREATE,
             param: parameters,
             commandType: CommandType.StoredProcedure
@@ -36,7 +36,7 @@ public class ServiceRepository(
         return await GetById(id);
     }
 
-    public async Task<ServiceEntity?> GetById(Guid id)
+    public async Task<ServiceEntity?> GetById(long id)
     {
         await using var connection = _connection.GetConnection();
 
@@ -85,7 +85,7 @@ public class ServiceRepository(
         );
     }
 
-    public async Task Update(Guid id, ServiceRequest req)
+    public async Task UpdateAsync(long id, ServiceRequest req)
     {
         await using var connection = _connection.GetConnection();
 

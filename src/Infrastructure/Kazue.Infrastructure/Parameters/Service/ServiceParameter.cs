@@ -17,11 +17,11 @@ public class ServiceParameter : IServiceParameter
         return parameters;
     }
 
-    public MySqlDynamicParameters DeleteParameters(Guid id)
+    public MySqlDynamicParameters DeleteParameters(long id)
     {
         var parameters = new MySqlDynamicParameters();
 
-        parameters.Add("P_ID_SERVICE", MySqlDbType.Guid, ParameterDirection.Input, id);
+        parameters.Add("P_ID_SERVICE", MySqlDbType.Int64, ParameterDirection.Input, id);
 
         return parameters;
     }
@@ -48,20 +48,20 @@ public class ServiceParameter : IServiceParameter
         return parameters;
     }
 
-    public MySqlDynamicParameters GetByIdParameters(Guid id)
+    public MySqlDynamicParameters GetByIdParameters(long id)
     {
         var parameters = new MySqlDynamicParameters();
 
-        parameters.Add("P_ID_SERVICE", MySqlDbType.Guid, ParameterDirection.Input, id);
+        parameters.Add("P_ID_SERVICE", MySqlDbType.Int64, ParameterDirection.Input, id);
 
         return parameters;
     }
 
-    public MySqlDynamicParameters UpdateParameters(Guid id, ServiceRequest req)
+    public MySqlDynamicParameters UpdateParameters(long id, ServiceRequest req)
     {
         var parameters = new MySqlDynamicParameters();
 
-        parameters.Add("P_ID_SERVICE", MySqlDbType.Guid, ParameterDirection.Input, id);
+        parameters.Add("P_ID_SERVICE", MySqlDbType.Int64, ParameterDirection.Input, id);
         parameters.Add("P_CD_SERVICE", MySqlDbType.String, ParameterDirection.Input, req.Code);
         parameters.Add("P_DS_SERVICE", MySqlDbType.String, ParameterDirection.Input, req.Description);
 

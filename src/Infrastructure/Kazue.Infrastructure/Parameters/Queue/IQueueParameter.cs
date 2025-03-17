@@ -6,9 +6,9 @@ namespace Kazue.Infrastructure.Parameters.Queue;
 public interface IQueueParameter
 {
     MySqlDynamicParameters CreateParameters(QueueRequest req);
-    MySqlDynamicParameters UpdateParameters(Guid id, QueueRequest req);
-    MySqlDynamicParameters GetByIdParameters(Guid id);
+    MySqlDynamicParameters UpdateParameters(long id, QueueRequest req);
+    MySqlDynamicParameters GetByIdParameters(long id);
     MySqlDynamicParameters GetUserByIdParameters(Guid id);
     MySqlDynamicParameters GetAllParameters(GetQueueRequest req);
-    MySqlDynamicParameters DeleteParameters(Guid id);
+    MySqlDynamicParameters DeleteParameters(long id);
 }

@@ -27,7 +27,7 @@ public class QueueRepository(
 
         var parameters = _queueParameter.CreateParameters(queueRequest);
 
-        var id = await connection.QueryFirstOrDefaultAsync<Guid>(
+        var id = await connection.QueryFirstOrDefaultAsync<int>(
             sql: QueueQuery.QUEUE_SP_CREATE,
             param: parameters,
             commandType: CommandType.StoredProcedure
@@ -36,7 +36,7 @@ public class QueueRepository(
         return await GetById(id);
     }
 
-    public async Task<QueueEntity?> GetById(Guid id)
+    public async Task<QueueEntity?> GetById(long id)
     {
         await using var connection = _connection.GetConnection();
 
@@ -52,7 +52,7 @@ public class QueueRepository(
     {
         await using var connection = _connection.GetConnection();
 
-        var parameters = _queueParameter.GetByIdParameters(id);
+        var parameters = _queueParameter.GetUserByIdParameters(id);
 
         return (await connection.QueryAsync<QueueEntity>(
             sql: QueueQuery.QUEUE_SP_GET_BY_ID_USER,
@@ -85,7 +85,7 @@ public class QueueRepository(
         );
     }
 
-    public async Task UpdateAsync(Guid id, QueueRequest req)
+    public async Task UpdateAsync(long id, QueueRequest req)
     {
         await using var connection = _connection.GetConnection();
 

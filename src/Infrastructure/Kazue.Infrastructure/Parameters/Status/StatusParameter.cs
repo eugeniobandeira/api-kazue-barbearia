@@ -11,26 +11,28 @@ public class StatusParameter : IStatusParameter
     {
         var parameters = new MySqlDynamicParameters();
 
+        parameters.Add("P_ID_CATEGORY", MySqlDbType.Int64, ParameterDirection.Input, req.IdCategory);
         parameters.Add("P_CD_STATUS", MySqlDbType.String, ParameterDirection.Input, req.Code);
         parameters.Add("P_DS_STATUS", MySqlDbType.String, ParameterDirection.Input, req.Description);
 
         return parameters;
     }
 
-    public MySqlDynamicParameters GetByIdParameters(Guid id)
+    public MySqlDynamicParameters GetByIdParameters(long id)
     {
         var parameters = new MySqlDynamicParameters();
 
-        parameters.Add("P_ID_STATUS", MySqlDbType.Guid, ParameterDirection.Input, id);
+        parameters.Add("P_ID_STATUS", MySqlDbType.Int64, ParameterDirection.Input, id);
 
         return parameters;
     }
 
-    public MySqlDynamicParameters UpdateParameters(Guid id, StatusRequest req)
+    public MySqlDynamicParameters UpdateParameters(long id, StatusRequest req)
     {
         var parameters = new MySqlDynamicParameters();
 
-        parameters.Add("P_ID_STATUS", MySqlDbType.Guid, ParameterDirection.Input, id);
+        parameters.Add("P_ID_STATUS", MySqlDbType.Int64, ParameterDirection.Input, id);
+        parameters.Add("P_ID_CATEGORY", MySqlDbType.Int64, ParameterDirection.Input, req.IdCategory);
         parameters.Add("P_CD_STATUS", MySqlDbType.String, ParameterDirection.Input, req.Code);
         parameters.Add("P_DS_STATUS", MySqlDbType.String, ParameterDirection.Input, req.Description);
 
@@ -59,11 +61,11 @@ public class StatusParameter : IStatusParameter
         return parameters;
     }
 
-    public MySqlDynamicParameters DeleteParameters(Guid id)
+    public MySqlDynamicParameters DeleteParameters(long id)
     {
         var parameters = new MySqlDynamicParameters();
 
-        parameters.Add("P_ID_STATUS", MySqlDbType.Guid, ParameterDirection.Input, id);
+        parameters.Add("P_ID_STATUS", MySqlDbType.Int64, ParameterDirection.Input, id);
 
         return parameters;
     }

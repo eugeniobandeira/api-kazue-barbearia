@@ -27,7 +27,7 @@ public class CategoryRepository(
 
         var parameters = _categoryParameter.CreateParameters(req);
 
-        var id = await connection.QueryFirstOrDefaultAsync<Guid>(
+        var id = await connection.QueryFirstOrDefaultAsync<int>(
             sql: CategoryQuery.CATEGORY_SP_CREATE,
             param: parameters,
             commandType: CommandType.StoredProcedure
@@ -36,7 +36,7 @@ public class CategoryRepository(
         return await GetById(id);
     }
 
-    public async Task DeleteAsync(Guid id)
+    public async Task DeleteAsync(long id)
     {
         await using var connection = _connection.GetConnection();
 
@@ -49,7 +49,7 @@ public class CategoryRepository(
         );
     }
 
-    public async Task UpdateAsync(Guid id, CategoryRequest req)
+    public async Task UpdateAsync(long id, CategoryRequest req)
     {
         await using var connection = _connection.GetConnection();
 
@@ -62,7 +62,7 @@ public class CategoryRepository(
         );
     }
 
-    public async Task<CategoryEntity?> GetById(Guid id)
+    public async Task<CategoryEntity?> GetById(long id)
     {
         await using var connection = _connection.GetConnection();
 

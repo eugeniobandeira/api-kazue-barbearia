@@ -25,9 +25,11 @@ public class UserRepository(
     {
         await using var connection = _connection.GetConnection();
 
-        var parameters = _userParameter.CreateParameters(req);
+        var id = Guid.NewGuid();
 
-        var id = await connection.QueryFirstOrDefaultAsync<Guid>(
+        var parameters = _userParameter.CreateParameters(req, id);
+
+        await connection.ExecuteAsync(
             sql: UserQuery.USER_SP_CREATE,
             param: parameters,
             commandType: CommandType.StoredProcedure

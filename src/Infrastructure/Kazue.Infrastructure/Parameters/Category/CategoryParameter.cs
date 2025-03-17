@@ -17,22 +17,22 @@ public class CategoryParameter : ICategoryParameter
         return parameters;
     }
 
-    public MySqlDynamicParameters UpdateParameters(Guid id, CategoryRequest req)
+    public MySqlDynamicParameters UpdateParameters(long id, CategoryRequest req)
     {
         var parameters = new MySqlDynamicParameters();
 
-        parameters.Add("P_ID_CATEGORY", MySqlDbType.Guid, ParameterDirection.Input, id);
+        parameters.Add("P_ID_CATEGORY", MySqlDbType.Int64, ParameterDirection.Input, id);
         parameters.Add("P_CD_CATEGORY", MySqlDbType.String, ParameterDirection.Input, req.Code);
         parameters.Add("P_DS_CATEGORY", MySqlDbType.String, ParameterDirection.Input, req.Description);
 
         return parameters;
     }
 
-    public MySqlDynamicParameters GetByIdParameters(Guid id)
+    public MySqlDynamicParameters GetByIdParameters(long id)
     {
         var parameters = new MySqlDynamicParameters();
 
-        parameters.Add("P_ID_CATEGORY", MySqlDbType.Guid, ParameterDirection.Input, id);
+        parameters.Add("P_ID_CATEGORY", MySqlDbType.Int64, ParameterDirection.Input, id);
 
         return parameters;
     }
@@ -59,11 +59,11 @@ public class CategoryParameter : ICategoryParameter
         return parameters;
     }
 
-    public MySqlDynamicParameters DeleteParameters(Guid id)
+    public MySqlDynamicParameters DeleteParameters(long id)
     {
         var parameters = new MySqlDynamicParameters();
 
-        parameters.Add("P_ID_CATEGORY", MySqlDbType.Guid, ParameterDirection.Input, id);
+        parameters.Add("P_ID_CATEGORY", MySqlDbType.Int64, ParameterDirection.Input, id);
 
         return parameters;
     }
