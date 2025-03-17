@@ -86,7 +86,7 @@ public class UsersController : ControllerBase
     }
 
     /// <summary>
-    /// Update user profile
+    /// UpdateAsync user profile
     /// </summary>
     /// <param name="useCase"></param>
     /// <param name="req"></param>
@@ -108,7 +108,7 @@ public class UsersController : ControllerBase
     }
 
     /// <summary>
-    /// Update user password
+    /// UpdateAsync user password
     /// </summary>
     /// <param name="useCase"></param>
     /// <param name="req"></param>

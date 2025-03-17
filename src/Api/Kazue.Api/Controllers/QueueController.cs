@@ -52,7 +52,7 @@ namespace Kazue.Api.Controllers
         [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetByIdAsync(
             [FromServices] IGetByIdQueueUseCase useCase,
-            [FromRoute] Guid id)
+            [FromRoute] long id)
         {
             var response = await useCase.ExecuteAsync(id);
 
@@ -84,7 +84,7 @@ namespace Kazue.Api.Controllers
         }
 
         /// <summary>
-        /// Update a queue by its id
+        /// UpdateAsync a queue by its id
         /// </summary>
         /// <param name="useCase"></param>
         /// <param name="req"></param>
@@ -97,7 +97,7 @@ namespace Kazue.Api.Controllers
         public async Task<IActionResult> UpdateAsync(
             [FromServices] IUpdateQueueUseCase useCase,
             [FromBody] QueueRequest req,
-            [FromRoute] Guid id)
+            [FromRoute] long id)
         {
             var response = await useCase.ExecuteAsync(id, req);
 
@@ -116,7 +116,7 @@ namespace Kazue.Api.Controllers
         [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status404NotFound)]
         public async Task<IActionResult> DeleteAsync(
             [FromServices] IDeleteServiceUseCase useCase, 
-            [FromRoute] Guid id)
+            [FromRoute] long id)
         {
             await useCase.ExecuteAsync(id);
 
