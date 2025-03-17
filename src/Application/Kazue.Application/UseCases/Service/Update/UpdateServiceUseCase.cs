@@ -16,18 +16,18 @@ public class UpdateServiceUseCase(
     private readonly IReadServiceRepository _readServiceRepository = readServiceRepository;
     private readonly IUpdateServiceRepository _updateServiceRepository = updateServiceRepository;
 
-    public async Task<ServiceResponse> ExecuteAsync(Guid id, ServiceRequest req)
+    public async Task<ServiceResponse> ExecuteAsync(long id, ServiceRequest req)
     {
         await Validate(id, req);
 
-        await _updateServiceRepository.Update(id, req);
+        await _updateServiceRepository.UpdateAsync(id, req);
 
         var response = await _readServiceRepository.GetById(id);
 
         return ServiceAdapter.FromEntityToResponse(response);
     }
 
-    private async Task Validate(Guid id, ServiceRequest req)
+    private async Task Validate(long id, ServiceRequest req)
     {
         var result = new ServiceValidator().Validate(req);
 

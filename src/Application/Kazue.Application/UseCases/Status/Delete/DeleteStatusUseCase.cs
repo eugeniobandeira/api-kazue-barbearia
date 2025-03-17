@@ -17,7 +17,7 @@ public class DeleteStatusUseCase : IDeleteStatusUseCase
         _readStatusRepository = readStatusRepository;
     }
 
-    public async Task ExecuteAsync(Guid id)
+    public async Task ExecuteAsync(long id)
     {
         var entity = await _readStatusRepository.GetById(id);
 

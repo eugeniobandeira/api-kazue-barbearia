@@ -6,16 +6,12 @@ using Kazue.Exception.MessageResource;
 
 namespace Kazue.Application.UseCases.Status.GetById;
 
-public class GetStatusByIdUseCase : IGetStatusByIdUseCase
+public class GetStatusByIdUseCase(IReadStatusRepository readStatusRepository) 
+    : IGetStatusByIdUseCase
 {
-    private readonly IReadStatusRepository _readStatusRepository;
+    private readonly IReadStatusRepository _readStatusRepository = readStatusRepository;
 
-    public GetStatusByIdUseCase(IReadStatusRepository readStatusRepository)
-    {
-        _readStatusRepository = readStatusRepository;
-    }
-
-    public async Task<StatusResponse> ExecuteAsync(Guid id)
+    public async Task<StatusResponse> ExecuteAsync(long id)
     {
         var repositoryResponse = await _readStatusRepository.GetById(id);
 

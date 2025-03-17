@@ -17,7 +17,7 @@ public class DeleteQueueUseCase : IDeleteQueueUseCase
         _readQueueRepository = readQueueRepository;
     }
 
-    public async Task ExecuteAsync(Guid id)
+    public async Task ExecuteAsync(long id)
     {
         var entity = await _readQueueRepository.GetById(id);
 

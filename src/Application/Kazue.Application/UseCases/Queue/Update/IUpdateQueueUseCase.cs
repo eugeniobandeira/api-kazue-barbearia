@@ -5,5 +5,5 @@ namespace Kazue.Application.UseCases.Queue.Update;
 
 public interface IUpdateQueueUseCase
 {
-    Task<QueueResponse> ExecuteAsync(Guid id, QueueRequest req);
+    Task<QueueResponse> ExecuteAsync(long id, QueueRequest req);
 }

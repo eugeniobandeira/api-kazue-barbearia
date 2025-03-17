@@ -4,5 +4,5 @@ namespace Kazue.Application.UseCases.Status.GetById;
 
 public interface IGetStatusByIdUseCase
 {
-    Task<StatusResponse> ExecuteAsync(Guid id);
+    Task<StatusResponse> ExecuteAsync(long id);
 }

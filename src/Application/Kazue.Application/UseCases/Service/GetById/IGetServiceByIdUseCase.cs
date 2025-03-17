@@ -4,5 +4,5 @@ namespace Kazue.Application.UseCases.Service.GetById;
 
 public interface IGetServiceByIdUseCase
 {
-    Task<ServiceResponse> ExecuteAsync(Guid id);
+    Task<ServiceResponse> ExecuteAsync(long id);
 }

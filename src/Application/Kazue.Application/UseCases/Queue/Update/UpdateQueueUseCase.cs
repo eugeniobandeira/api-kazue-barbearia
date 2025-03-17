@@ -19,7 +19,7 @@ public class UpdateQueueUseCase(
     private readonly IReadQueueRepository _readQueueRepository = readQueueRepository;
     private readonly IReadServiceRepository _readServiceRepository = readServiceRepository;
 
-    public async Task<QueueResponse> ExecuteAsync(Guid id, QueueRequest req)
+    public async Task<QueueResponse> ExecuteAsync(long id, QueueRequest req)
     {
         await Validate(id, req);
 
@@ -32,7 +32,7 @@ public class UpdateQueueUseCase(
         return QueueAdapter.FromEntityToResponse(queueEntity, servicesList);
     }
 
-    private async Task Validate(Guid id, QueueRequest req)
+    private async Task Validate(long id, QueueRequest req)
     {
         var result = new QueueValidator().Validate(req);
 
@@ -53,7 +53,7 @@ public class UpdateQueueUseCase(
 
         foreach (var idService in idServiceList)
         {
-            var repositoryResponse = await _readServiceRepository.GetById(Guid.Parse(idService));
+            var repositoryResponse = await _readServiceRepository.GetById(long.Parse(idService));
 
             if (repositoryResponse is not null)
             {

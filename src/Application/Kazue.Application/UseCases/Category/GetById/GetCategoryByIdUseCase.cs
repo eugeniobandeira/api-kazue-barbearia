@@ -11,7 +11,7 @@ public class GetCategoryByIdUseCase(IReadCategoryRepository readCategoryReposito
 {
     private readonly IReadCategoryRepository _readCategoryRepository = readCategoryRepository;
 
-    public async Task<CategoryResponse?> ExecuteAsync(Guid id)
+    public async Task<CategoryResponse?> ExecuteAsync(long id)
     {
         var repositoryResponse = await _readCategoryRepository.GetById(id) ?? 
                                  throw new NotFoundException(ErrorMessageResource.NOT_FOUND_EXCEPTION);

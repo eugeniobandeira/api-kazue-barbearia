@@ -2,5 +2,5 @@
 
 public interface IDeleteCategoryUseCase
 {
-    Task ExecuteAsync(Guid id);
+    Task ExecuteAsync(long id);
 }

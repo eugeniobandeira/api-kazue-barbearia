@@ -16,7 +16,7 @@ public class UpdateCategoryUseCase(
     private readonly IUpdateCategoryRepository _updateCategoryRepository = updateCategoryRepository;
     private readonly IReadCategoryRepository _readCategoryRepository = readCategoryRepository;
 
-    public async Task<CategoryResponse> ExecuteAsync(Guid id, CategoryRequest req)
+    public async Task<CategoryResponse> ExecuteAsync(long id, CategoryRequest req)
     {
         await Validate(id, req);
 
@@ -27,7 +27,7 @@ public class UpdateCategoryUseCase(
         return CategoryAdapter.FromEntityToResponse(response);
     }
 
-    private async Task Validate(Guid id, CategoryRequest req)
+    private async Task Validate(long id, CategoryRequest req)
     {
         var result = new CategoryValidator().Validate(req);
 

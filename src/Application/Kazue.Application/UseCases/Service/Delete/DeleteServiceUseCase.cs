@@ -12,7 +12,7 @@ public class DeleteServiceUseCase(
     private readonly IDeleteServiceRepository _deleteServiceRepository = deleteServiceRepository;
     private readonly IReadServiceRepository _readServiceRepository = readServiceRepository;
 
-    public async Task ExecuteAsync(Guid id)
+    public async Task ExecuteAsync(long id)
     {
         var entity = await _readServiceRepository.GetById(id) ?? 
                      throw new NotFoundException(ErrorMessageResource.NOT_FOUND_EXCEPTION);

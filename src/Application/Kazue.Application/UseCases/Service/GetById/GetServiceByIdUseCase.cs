@@ -11,7 +11,7 @@ public class GetServiceByIdUseCase(IReadServiceRepository readServiceRepository)
 {
     private readonly IReadServiceRepository _readServiceRepository = readServiceRepository;
 
-    public async Task<ServiceResponse> ExecuteAsync(Guid id)
+    public async Task<ServiceResponse> ExecuteAsync(long id)
     {
         var repositoryResponse = await _readServiceRepository.GetById(id) ?? 
                                  throw new NotFoundException(ErrorMessageResource.NOT_FOUND_EXCEPTION);

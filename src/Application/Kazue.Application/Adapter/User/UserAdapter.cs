@@ -20,6 +20,7 @@ public static class UserAdapter
             Name = entity.DS_NAME,
             Role = entity.DS_ROLE,
             IdStatus = entity.ID_STATUS,
+            StatusCode = entity.CD_STATUS,
             StatusDescription = entity.DS_STATUS,
             DateOfBirth = entity.DT_BIRTH,
             DateOfRegistry = entity.DT_REGISTRY

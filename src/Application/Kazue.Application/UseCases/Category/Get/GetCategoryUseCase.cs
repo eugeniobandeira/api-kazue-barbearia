@@ -19,14 +19,15 @@ public class GetCategoryUseCase(IReadCategoryRepository readCategoryRepository)
 
         if (listApiResponse.Count != 0)
         {
-            foreach (var response in listApiResponse)
+            foreach (var entity in listApiResponse)
             {
-                var status = CategoryAdapter.FromEntityToResponse(response);
-                apiResponse.Response.Add(status);
+                var categoryResponse = CategoryAdapter.FromEntityToResponse(entity);
+                apiResponse.Response.Add(categoryResponse);
             }
         }
 
-        apiResponse.ResultCount = listApiResponse.Count;
+        apiResponse.ResultCount = listApiResponse.First().QT_RECORDS;
+        apiResponse.RowsCount = listApiResponse.First().QT_ROWS;
 
         return apiResponse;
     }

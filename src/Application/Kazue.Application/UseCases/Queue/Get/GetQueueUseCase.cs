@@ -46,7 +46,7 @@ public class GetQueueUseCase(
 
         foreach (var idService in idServiceList)
         {
-            var repositoryResponse = await _readServiceRepository.GetById(Guid.Parse(idService));
+            var repositoryResponse = await _readServiceRepository.GetById(long.Parse(idService));
 
             if (repositoryResponse is not null)
             {

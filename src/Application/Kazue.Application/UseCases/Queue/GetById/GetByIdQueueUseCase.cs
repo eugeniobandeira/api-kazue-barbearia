@@ -16,7 +16,7 @@ public class GetByIdQueueUseCase(
     private readonly IReadQueueRepository _readQueueRepository = readQueueRepository;
     private readonly IReadServiceRepository _readServiceRepository = readServiceRepository;
 
-    public async Task<QueueResponse> ExecuteAsync(Guid id)
+    public async Task<QueueResponse> ExecuteAsync(long id)
     {
         var repositoryResponse = await _readQueueRepository.GetById(id) ?? 
                                  throw new NotFoundException(ErrorMessageResource.NOT_FOUND_EXCEPTION);

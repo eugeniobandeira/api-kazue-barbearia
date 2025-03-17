@@ -2,5 +2,5 @@
 
 public interface IDeleteServiceUseCase
 {
-    Task ExecuteAsync(Guid id);
+    Task ExecuteAsync(long id);
 }

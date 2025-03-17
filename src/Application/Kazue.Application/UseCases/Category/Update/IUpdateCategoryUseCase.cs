@@ -5,5 +5,5 @@ namespace Kazue.Application.UseCases.Category.Update;
 
 public interface IUpdateCategoryUseCase
 {
-    Task<CategoryResponse> ExecuteAsync(Guid id, CategoryRequest req);
+    Task<CategoryResponse> ExecuteAsync(long id, CategoryRequest req);
 }

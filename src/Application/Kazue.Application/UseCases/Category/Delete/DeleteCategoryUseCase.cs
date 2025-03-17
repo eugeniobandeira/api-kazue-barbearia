@@ -12,7 +12,7 @@ public class DeleteCategoryUseCase(
     private readonly IReadCategoryRepository _readCategoryRepository = readCategoryRepository;
     private readonly IDeleteCategoryRepository _deleteCategoryRepository = deleteCategoryRepository;
 
-    public async Task ExecuteAsync(Guid id)
+    public async Task ExecuteAsync(long id)
     {
         var entity = await _readCategoryRepository.GetById(id) ?? 
                      throw new NotFoundException(ErrorMessageResource.NOT_FOUND_EXCEPTION);

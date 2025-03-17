@@ -8,31 +8,26 @@ using Kazue.Exception.MessageResource;
 
 namespace Kazue.Application.UseCases.Status.Update;
 
-public class UpdateStatusUseCase : IUpdateStatusUseCase
+public class UpdateStatusUseCase(
+    IUpdateStatusRepository updateStatusRepository,
+    IReadStatusRepository readStatusRepository) 
+    : IUpdateStatusUseCase
 {
-    private readonly IUpdateStatusRepository _updateStatusRepository;
-    private readonly IReadStatusRepository _readStatusRepository;
+    private readonly IUpdateStatusRepository _updateStatusRepository = updateStatusRepository;
+    private readonly IReadStatusRepository _readStatusRepository = readStatusRepository;
 
-    public UpdateStatusUseCase(
-        IUpdateStatusRepository updateStatusRepository,
-        IReadStatusRepository readStatusRepository)
-    {
-        _updateStatusRepository = updateStatusRepository;
-        _readStatusRepository = readStatusRepository;
-    }
-
-    public async Task<StatusResponse> ExecuteAsync(Guid id, StatusRequest req)
+    public async Task<StatusResponse> ExecuteAsync(long id, StatusRequest req)
     {
         await Validate(id, req);
 
-        await _updateStatusRepository.Update(id, req);
+        await _updateStatusRepository.UpdateAsync(id, req);
 
         var response = await _readStatusRepository.GetById(id);
 
         return StatusAdapter.FromEntityToResponse(response);
     }
 
-    private async Task Validate(Guid id, StatusRequest req)
+    private async Task Validate(long id, StatusRequest req)
     {
         var result = new StatusValidator().Validate(req);
 
