@@ -31,6 +31,8 @@ public class CreateQueueUseCase : ICreateQueueUseCase
     {
         await Validate(req);
 
+        // criar logica para o total do serviço
+
         var repositoryResponse = await _createQueueRepository.CreateAsync(req);
 
         var servicesCode = repositoryResponse.IDS_SERVICES.Split(',');

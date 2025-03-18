@@ -13,6 +13,7 @@ public class ServiceParameter : IServiceParameter
 
         parameters.Add("P_CD_SERVICE", MySqlDbType.String, ParameterDirection.Input, req.Code);
         parameters.Add("P_DS_SERVICE", MySqlDbType.String, ParameterDirection.Input, req.Description);
+        parameters.Add("P_VL_PRICE", MySqlDbType.Decimal, ParameterDirection.Input, req.Price);
 
         return parameters;
     }
@@ -64,6 +65,7 @@ public class ServiceParameter : IServiceParameter
         parameters.Add("P_ID_SERVICE", MySqlDbType.Int64, ParameterDirection.Input, id);
         parameters.Add("P_CD_SERVICE", MySqlDbType.String, ParameterDirection.Input, req.Code);
         parameters.Add("P_DS_SERVICE", MySqlDbType.String, ParameterDirection.Input, req.Description);
+        parameters.Add("P_VL_PRICE", MySqlDbType.Decimal, ParameterDirection.Input, req.Price);
 
         return parameters;
     }

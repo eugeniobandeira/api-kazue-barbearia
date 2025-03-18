@@ -15,7 +15,7 @@ namespace Kazue.Api.Controllers
     /// <summary>
     /// Controller responsible for manage data regarding services
     /// </summary>
-    [Authorize]
+    //[Authorize]
     [Route("v1/api/services")]
     [ApiController]
     public class ServicesController : ControllerBase

@@ -11,8 +11,9 @@ public class QueueParameter : IQueueParameter
     {
         var parameters = new MySqlDynamicParameters();
 
-        parameters.Add("P_ID_BARBER", MySqlDbType.Guid, ParameterDirection.Input, req.IdBarber);
+        parameters.Add("P_ID_STATUS", MySqlDbType.Guid, ParameterDirection.Input, req.IdStatus);
         parameters.Add("P_DS_CUSTOMER", MySqlDbType.Guid, ParameterDirection.Input, req.IdCustomer);
+        parameters.Add("P_ID_BARBER", MySqlDbType.Guid, ParameterDirection.Input, req.IdBarber);
         parameters.Add("P_ID_SERVICES", MySqlDbType.String, ParameterDirection.Input, req.IdServices);
 
         return parameters;

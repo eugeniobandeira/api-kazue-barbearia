@@ -22,6 +22,14 @@ public class GetByIdQueueUseCase(
                                  throw new NotFoundException(ErrorMessageResource.NOT_FOUND_EXCEPTION);
         var serviceList = new List<ServiceEntity>();
 
+        var servicesIdList = repositoryResponse.IDS_SERVICES.Split(',');
+
+        foreach (var idService in servicesIdList)
+        {
+            var srv = await _readServiceRepository.GetById(long.Parse(idService));
+            serviceList.Add(srv);
+        }
+
         return QueueAdapter.FromEntityToResponse(repositoryResponse, serviceList);
     }
 }

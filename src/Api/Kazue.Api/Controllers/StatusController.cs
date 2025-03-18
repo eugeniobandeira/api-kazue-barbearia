@@ -15,7 +15,7 @@ namespace Kazue.Api.Controllers
     /// <summary>
     /// Controller responsible for manage data regarding status
     /// </summary>
-    [Authorize]
+    //[Authorize]
     [Route("v1/api/status")]
     [ApiController]
     public class StatusController : ControllerBase

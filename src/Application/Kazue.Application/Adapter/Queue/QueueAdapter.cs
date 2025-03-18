@@ -42,6 +42,8 @@ public static class QueueAdapter
             Description = entity.DS_STATUS
         };
 
+        var serviceResponseList = new List<ServiceResponse>();
+
         foreach (var service in services)
         {
             var srv = new ServiceResponse
@@ -52,8 +54,10 @@ public static class QueueAdapter
                 Price = service.VL_PRICE
             };
 
-            response.Services.Add(srv);
+            serviceResponseList.Add(srv);
         }
+
+        response.Services = serviceResponseList;
 
         return response;
     }
