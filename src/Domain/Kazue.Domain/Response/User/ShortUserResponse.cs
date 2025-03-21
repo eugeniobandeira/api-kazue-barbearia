@@ -2,7 +2,8 @@
 
 public class ShortUserResponse
 {
-    public string Name { get; set; } = string.Empty;
-    public string Surname { get; set; } = string.Empty;
-    public string NickName { get; set; } = string.Empty;
+    public string Fullname { get; set; } = string.Empty;
+    public string? Nickname { get; set; } = string.Empty;
+    public bool NicknamePreference { get; set; }
+
 }

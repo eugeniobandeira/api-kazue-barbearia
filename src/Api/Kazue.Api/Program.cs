@@ -9,6 +9,7 @@ using System.Reflection;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using Kazue.Api.Filter;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -60,6 +61,8 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 #endregion 
+
+builder.Services.AddMvc(options => options.Filters.Add(typeof(ExceptionFilter)));
 
 #region Jwt Authentication
 var signingKey = builder.Configuration.GetValue<string>("Settings:Jwt:SigningKey");

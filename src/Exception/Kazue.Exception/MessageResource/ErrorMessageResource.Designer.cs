@@ -151,6 +151,15 @@ namespace Kazue.Exception.MessageResource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Category can not be null or less than zero.
+        /// </summary>
+        public static string INVALID_CATEGORY {
+            get {
+                return ResourceManager.GetString("INVALID_CATEGORY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This email is not valid.
         /// </summary>
         public static string INVALID_EMAIL {

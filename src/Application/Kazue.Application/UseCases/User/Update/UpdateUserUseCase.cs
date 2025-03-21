@@ -30,21 +30,21 @@ public class UpdateUserUseCase : IUpdateUserUseCase
 
         var user = await _readUserRepository.GetById(loggedUser.ID_USER);
 
-        user.DS_NAME = req.Name;
-        user.DS_SURNAME = req.Surname;
-        user.DS_NICKNAME = req.Nickname;
-        user.DS_EMAIL = req.Email;
-        user.DS_PHONE = req.Phone;
+        //user.DS_FULLNAME = req.Fullname;
+        //user.DS_NICKNAME = req.Nickname;
+        //user.CK_NICKNAME_PREFERENCE = req.NicknamePreference ?? false;
+        //user.DS_EMAIL = req.Email;
+        //user.DS_PHONE = req.Phone;
 
         await _updateUserRepository.UpdateAsync(id, req);
 
         return new UserProfileResponse
         {
-            Name = user.DS_NAME,
-            Surname = user.DS_SURNAME,
+            Fullname = user.DS_FULLNAME,
             Email = user.DS_EMAIL,
             Nickname = user.DS_NICKNAME,
-            Phone = user.DS_PHONE
+            NicknamePreference = user.CK_NICKNAME_PREFERENCE,
+            Phone = user.DS_PHONE,
         };
     }
 
@@ -58,7 +58,11 @@ public class UpdateUserUseCase : IUpdateUserUseCase
         {
             var userExist = await _readUserRepository.GetByEmail(req.Email);
             if (userExist is not null)
-                result.Errors.Add(new FluentValidation.Results.ValidationFailure(string.Empty, ErrorMessageResource.EMAIL_ALREADY_REGISTERED));
+                result
+                    .Errors
+                    .Add(new FluentValidation
+                        .Results
+                        .ValidationFailure(string.Empty, ErrorMessageResource.EMAIL_ALREADY_REGISTERED));
         }
 
         if (!result.IsValid)

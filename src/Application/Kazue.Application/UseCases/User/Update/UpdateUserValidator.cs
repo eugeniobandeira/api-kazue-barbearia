@@ -8,7 +8,7 @@ public class UpdateUserValidator : AbstractValidator<UpdateUserRequest>
 {
     public UpdateUserValidator()
     {
-        RuleFor(user => user.Name).NotEmpty().WithMessage(ErrorMessageResource.EMPTY_NAME);
+        RuleFor(user => user.Fullname).NotEmpty().WithMessage(ErrorMessageResource.EMPTY_NAME);
         RuleFor(user => user.Email)
             .NotEmpty()
             .WithMessage(ErrorMessageResource.EMPTY_EMAIL)

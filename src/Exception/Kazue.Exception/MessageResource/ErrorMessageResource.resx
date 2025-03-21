@@ -189,4 +189,8 @@
     <value>You are already waiting in queue (in progress)</value>
     <comment>Você já está aguardando na fila (existe um registro na fila ainda não concluído)</comment>
   </data>
+  <data name="INVALID_CATEGORY" xml:space="preserve">
+    <value>Category can not be null or less than zero</value>
+    <comment>A categoria não pode ser nula ou menor que zero</comment>
+  </data>
 </root>

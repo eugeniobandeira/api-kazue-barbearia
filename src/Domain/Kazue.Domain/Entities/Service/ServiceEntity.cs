@@ -6,4 +6,7 @@ public class ServiceEntity
     public string CD_SERVICE { get; set; } = string.Empty;
     public string DS_SERVICE { get; set; } = string.Empty;
     public decimal VL_PRICE { get; set; }
+
+    public int QT_RECORDS { get; set; }
+    public int QT_ROWS { get; set; }
 }

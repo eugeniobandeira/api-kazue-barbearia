@@ -39,8 +39,7 @@ public class CreateUserUseCase : ICreateUserUseCase
         return new RegisteredUserResponse
         {
             Id = repositoryResponse.ID_USER,
-            Name = repositoryResponse.DS_NAME,
-            Surname = repositoryResponse.DS_SURNAME,
+            Fullname = repositoryResponse.DS_FULLNAME,
             Token = _tokenGenerator.Generate(repositoryResponse)
         };
     }

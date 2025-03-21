@@ -30,8 +30,8 @@ public class GetStatusUseCase : IGetStatusUseCase
             }
         }
 
-        apiResponse.ResultCount = listApiResponse.Count();
-        //apiResponse.RowsCount = listApiResponse.First().QT_RECORDS;
+        apiResponse.ResultCount = listApiResponse.First().QT_RECORDS;
+        apiResponse.RowsCount = listApiResponse.First().QT_ROWS;
 
         return apiResponse;
     }

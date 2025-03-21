@@ -15,5 +15,10 @@ public class StatusValidator : AbstractValidator<StatusRequest>
         RuleFor(status => status.Description)
             .NotEmpty()
             .WithMessage(ErrorMessageResource.EMPTY_DESCRIPTION);
+
+        RuleFor(status => status.IdCategory)
+            .GreaterThan(0)
+            .NotEmpty()
+            .WithMessage(ErrorMessageResource.INVALID_CATEGORY);
     }
 }

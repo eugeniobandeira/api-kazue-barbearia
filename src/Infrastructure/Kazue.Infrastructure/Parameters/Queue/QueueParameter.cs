@@ -15,6 +15,7 @@ public class QueueParameter : IQueueParameter
         parameters.Add("P_DS_CUSTOMER", MySqlDbType.Guid, ParameterDirection.Input, req.IdCustomer);
         parameters.Add("P_ID_BARBER", MySqlDbType.Guid, ParameterDirection.Input, req.IdBarber);
         parameters.Add("P_ID_SERVICES", MySqlDbType.String, ParameterDirection.Input, req.IdServices);
+        parameters.Add("P_VL_AMOUNT", MySqlDbType.Decimal, ParameterDirection.Input, req.Amount);
 
         return parameters;
     }
@@ -67,6 +68,7 @@ public class QueueParameter : IQueueParameter
         parameters.Add("P_ID_BARBER", MySqlDbType.Guid, ParameterDirection.Input, req.IdBarber);
         parameters.Add("P_DS_CUSTOMER", MySqlDbType.Guid, ParameterDirection.Input, req.IdCustomer);
         parameters.Add("P_ID_SERVICES", MySqlDbType.String, ParameterDirection.Input, req.IdServices);
+        parameters.Add("P_VL_AMOUNT", MySqlDbType.Decimal, ParameterDirection.Input, req.Amount);
 
         return parameters;
     }

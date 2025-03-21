@@ -8,7 +8,7 @@ public class UserValidator : AbstractValidator<CreateUserRequest>
 {
     public UserValidator()
     {
-        RuleFor(user => user.Name)
+        RuleFor(user => user.Fullname)
             .NotEmpty()
             .WithMessage(ErrorMessageResource.EMPTY_NAME);
 

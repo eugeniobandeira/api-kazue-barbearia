@@ -30,9 +30,7 @@ public class CreateQueueUseCase : ICreateQueueUseCase
     public async Task<QueueResponse> ExecuteAsync(QueueRequest req)
     {
         await Validate(req);
-
-        // criar logica para o total do serviço
-
+        
         var repositoryResponse = await _createQueueRepository.CreateAsync(req);
 
         var servicesCode = repositoryResponse.IDS_SERVICES.Split(',');
@@ -40,7 +38,7 @@ public class CreateQueueUseCase : ICreateQueueUseCase
         var servicesList = new List<ServiceEntity>();
 
         var request = new ServiceRequest();
-
+        
         foreach (var service in servicesCode)
         {
             request.Code = service;

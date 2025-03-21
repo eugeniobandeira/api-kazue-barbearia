@@ -8,16 +8,16 @@ public static class UserAdapter
     public static UserResponse FromEntityToResponse(UserEntity? entity)
     {
         if (entity is null)
-            throw new ArgumentNullException("Cannot adapt a null entity to response", nameof(entity));
+            throw new ArgumentNullException(nameof(entity), "Cannot adapt a null entity to response");
 
         var response = new UserResponse()
         {
             Id = entity.ID_USER,
-            Surname = entity.DS_SURNAME,
+            Fullname = entity.DS_FULLNAME,
             Nickname = entity.DS_NICKNAME,
+            NicknamePreference = entity.CK_NICKNAME_PREFERENCE,
             Email = entity.DS_EMAIL,
             Phone = entity.DS_PHONE,
-            Name = entity.DS_NAME,
             Role = entity.DS_ROLE,
             IdStatus = entity.ID_STATUS,
             StatusCode = entity.CD_STATUS,

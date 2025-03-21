@@ -19,14 +19,15 @@ public class GetServiceUseCase(IReadServiceRepository readServiceRepository)
 
         if (listApiResponse.Count != 0)
         {
-            foreach (var response in listApiResponse)
+            foreach (var service in listApiResponse)
             {
-                var status = ServiceAdapter.FromEntityToResponse(response);
-                apiResponse.Response.Add(status);
+                var srv = ServiceAdapter.FromEntityToResponse(service);
+                apiResponse.Response.Add(srv);
             }
         }
 
-        apiResponse.ResultCount = listApiResponse.Count;
+        apiResponse.ResultCount = listApiResponse.First().QT_RECORDS;
+        apiResponse.RowsCount = listApiResponse.First().QT_ROWS;
 
         return apiResponse;
     }

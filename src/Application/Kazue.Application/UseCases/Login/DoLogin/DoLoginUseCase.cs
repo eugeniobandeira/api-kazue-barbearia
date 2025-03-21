@@ -36,8 +36,7 @@ public class DoLoginUseCase : IDoLoginUseCase
         return new RegisteredUserResponse
         {
             Id = user.ID_USER,
-            Name = user.DS_NAME,
-            Surname = user.DS_SURNAME,
+            Fullname = user.DS_FULLNAME,
             Token = _jwtTokenGenerator.Generate(user)
         };
     }

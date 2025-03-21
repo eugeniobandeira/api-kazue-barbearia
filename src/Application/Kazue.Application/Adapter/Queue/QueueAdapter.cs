@@ -12,7 +12,7 @@ public static class QueueAdapter
     public static QueueResponse FromEntityToResponse(QueueEntity entity, IList<ServiceEntity> services)
     {
         if (entity is null)
-            throw new ArgumentNullException("Cannot adapt a null entity to response", nameof(entity));
+            throw new ArgumentNullException(nameof(entity), "Cannot adapt a null entity to response");
 
         var response = new QueueResponse();
 
@@ -23,16 +23,16 @@ public static class QueueAdapter
 
         response.Barber = new ShortUserResponse
         {
-            Name = entity.DS_BARBER_NAME,
-            Surname = entity.DS_BARBER_SURNAME,
-            NickName = entity.DS_BARBER_NICKNAME
+            Fullname = entity.DS_BARBER_FULLNAME,
+            Nickname = entity.DS_BARBER_NICKNAME,
+            NicknamePreference = entity.CK_BARBER_NICKNAME_PREFERENCE
         };
 
         response.Customer = new ShortUserResponse
         {
-            Name = entity.DS_CUSTOMER_NAME,
-            Surname = entity.DS_CUSTOMER_SURNAME,
-            NickName = entity.DS_CUSTOMER_NICKNAME
+            Fullname = entity.DS_CUSTOMER_FULLNAME,
+            Nickname = entity.DS_CUSTOMER_NICKNAME,
+            NicknamePreference = entity.CK_CUSTOMER_NICKNAME_PREFERENCE
         };
 
         response.Status = new ItemResponse
@@ -58,70 +58,6 @@ public static class QueueAdapter
         }
 
         response.Services = serviceResponseList;
-
-        return response;
-    }
-
-    public static IList<QueueResponse> FromEntityListToEntityResponse(
-        IEnumerable<QueueEntity>? entityList, 
-        IEnumerable<ServiceEntity>? servicesList)
-    {
-        if (entityList is null)
-            throw new ArgumentNullException("Cannot adapt a null entity to response", nameof(entityList));
-
-        List<QueueResponse> response = [];
-
-        var services = servicesList;
-
-        var servicesResponse = new List<ServiceResponse>();
-
-        foreach (var srv in services)
-        {
-            var result = new ServiceResponse()
-            {
-                Id = srv.ID_SERVICE,
-                Code = srv.CD_SERVICE,
-                Description = srv.DS_SERVICE,
-                Price = srv.VL_PRICE
-            };
-
-            servicesResponse.Add(result);
-        }
-
-        foreach (var entity in entityList)
-        {
-            response.Add(new QueueResponse
-            {
-                Id = entity.ID_QUEUE,
-                DtCheckinAt = entity.DT_CHECKIN_AT,
-                DtCheckoutAt = entity.DT_CHECKOUT_AT,
-                Amount = entity.VL_AMOUNT,
-
-                Barber = new ShortUserResponse
-                {
-                    Name = entity.DS_BARBER_NAME,
-                    Surname = entity.DS_BARBER_SURNAME,
-                    NickName = entity.DS_BARBER_NICKNAME
-                },
-
-                Customer = new ShortUserResponse
-                {
-                    Name = entity.DS_CUSTOMER_NAME,
-                    Surname = entity.DS_CUSTOMER_SURNAME,
-                    NickName = entity.DS_CUSTOMER_NICKNAME
-                },
-
-                Status = new ItemResponse
-                {
-                    Id = entity.ID_STATUS,
-                    Code = entity.CD_STATUS,
-                    Description = entity.DS_STATUS
-                },
-
-                Services = servicesResponse
-            });
-
-        }
 
         return response;
     }

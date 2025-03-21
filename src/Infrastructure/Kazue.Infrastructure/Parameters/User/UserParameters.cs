@@ -12,9 +12,9 @@ public class UserParameters : IUserParameter
         var parameters = new MySqlDynamicParameters();
 
         parameters.Add("P_ID_USER", MySqlDbType.Guid, ParameterDirection.Input, id.ToString());
-        parameters.Add("P_DS_NAME", MySqlDbType.String, ParameterDirection.Input, req.Name);
-        parameters.Add("P_DS_SURNAME", MySqlDbType.String, ParameterDirection.Input, req.Surname);
+        parameters.Add("P_DS_FULLNAME", MySqlDbType.String, ParameterDirection.Input, req.Fullname);
         parameters.Add("P_DS_NICKNAME", MySqlDbType.String, ParameterDirection.Input, req.Nickname);
+        parameters.Add("P_CK_NICKNAME_PREFERENCE", MySqlDbType.Binary, ParameterDirection.Input, req.NicknamePreference);
         parameters.Add("P_DS_EMAIL", MySqlDbType.String, ParameterDirection.Input, req.Email);
         parameters.Add("P_DS_PHONE", MySqlDbType.String, ParameterDirection.Input, req.Phone);
         parameters.Add("P_DS_ROLE", MySqlDbType.String, ParameterDirection.Input, req.Role);
@@ -47,9 +47,9 @@ public class UserParameters : IUserParameter
         var parameters = new MySqlDynamicParameters();
 
         parameters.Add("P_ID_USER", MySqlDbType.Guid, ParameterDirection.Input, id);
-        parameters.Add("P_DS_NAME", MySqlDbType.String, ParameterDirection.Input, req.Name);
-        parameters.Add("P_DS_SURNAME", MySqlDbType.String, ParameterDirection.Input, req.Surname);
+        parameters.Add("P_DS_FULLNAME", MySqlDbType.String, ParameterDirection.Input, req.Fullname);
         parameters.Add("P_DS_NICKNAME", MySqlDbType.String, ParameterDirection.Input, req.Nickname);
+        parameters.Add("P_CK_NICKNAME_PREFERENCE", MySqlDbType.Binary, ParameterDirection.Input, req.NicknamePreference);
         parameters.Add("P_DS_EMAIL", MySqlDbType.String, ParameterDirection.Input, req.Email);
         parameters.Add("P_DS_PHONE", MySqlDbType.String, ParameterDirection.Input, req.Phone);
 
@@ -60,8 +60,7 @@ public class UserParameters : IUserParameter
     {
         var parameters = new MySqlDynamicParameters();
 
-        parameters.Add("P_DS_NAME", MySqlDbType.String, ParameterDirection.Input, req.Name);
-        parameters.Add("P_DS_SURNAME", MySqlDbType.String, ParameterDirection.Input, req.Surname);
+        parameters.Add("P_DS_FULLNAME", MySqlDbType.String, ParameterDirection.Input, req.Fullname);
         parameters.Add("P_DS_NICKNAME", MySqlDbType.String, ParameterDirection.Input, req.Nickname);
         parameters.Add("P_DS_EMAIL", MySqlDbType.String, ParameterDirection.Input, req.Email);
         parameters.Add("P_DS_PHONE", MySqlDbType.String, ParameterDirection.Input, req.Phone);

@@ -22,7 +22,7 @@ internal class JwtTokenGenerator : IJwtTokenGenerator
     {
         var claims = new List<Claim>()
         {
-            new(ClaimTypes.Name, userEntity.DS_NAME),
+            new(ClaimTypes.Name, userEntity.DS_FULLNAME),
             new(ClaimTypes.Sid, userEntity.ID_USER.ToString()),
             new(ClaimTypes.Role, userEntity.DS_ROLE),
         };
