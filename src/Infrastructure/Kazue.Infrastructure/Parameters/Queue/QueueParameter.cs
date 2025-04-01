@@ -44,7 +44,6 @@ public class QueueParameter : IQueueParameter
 
         parameters.Add("P_ID_BARBER", MySqlDbType.Guid, ParameterDirection.Input, req.IdBarber);
         parameters.Add("P_ID_CUSTOMER", MySqlDbType.Guid, ParameterDirection.Input, req.IdCustomer);
-        parameters.Add("P_CD_SERVICES", MySqlDbType.String, ParameterDirection.Input, req.CdService);
         parameters.Add("P_PAGE", MySqlDbType.Int64, ParameterDirection.Input, req.Page);
         parameters.Add("P_PAGE_SIZE", MySqlDbType.Int64, ParameterDirection.Input, req.PageSize);
 
@@ -65,8 +64,9 @@ public class QueueParameter : IQueueParameter
         var parameters = new MySqlDynamicParameters();
 
         parameters.Add("P_ID_QUEUE", MySqlDbType.Int64, ParameterDirection.Input, id);
+        parameters.Add("P_ID_STATUS", MySqlDbType.Int64, ParameterDirection.Input, req.IdStatus);
         parameters.Add("P_ID_BARBER", MySqlDbType.Guid, ParameterDirection.Input, req.IdBarber);
-        parameters.Add("P_DS_CUSTOMER", MySqlDbType.Guid, ParameterDirection.Input, req.IdCustomer);
+        parameters.Add("P_ID_CUSTOMER", MySqlDbType.Guid, ParameterDirection.Input, req.IdCustomer);
         parameters.Add("P_ID_SERVICES", MySqlDbType.String, ParameterDirection.Input, req.IdServices);
         parameters.Add("P_VL_AMOUNT", MySqlDbType.Decimal, ParameterDirection.Input, req.Amount);
 

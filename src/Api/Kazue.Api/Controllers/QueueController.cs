@@ -3,10 +3,12 @@ using Kazue.Application.UseCases.Queue.Get;
 using Kazue.Application.UseCases.Queue.GetById;
 using Kazue.Application.UseCases.Queue.Update;
 using Kazue.Application.UseCases.Service.Delete;
+using Kazue.Domain.Helper;
 using Kazue.Domain.Request.Queue;
 using Kazue.Domain.Response.Error;
 using Kazue.Domain.Response.Queue;
 using Kazue.Domain.Response.Shared;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Kazue.Api.Controllers
@@ -46,6 +48,7 @@ namespace Kazue.Api.Controllers
         /// <param name="useCase"></param>
         /// <param name="id"></param>
         /// <returns></returns>
+        [Authorize(Roles = RolesHelper.ADMIN)]
         [HttpGet]
         [Route("{id}")]
         [ProducesResponseType(typeof(QueueResponse), StatusCodes.Status200OK)]
@@ -90,6 +93,7 @@ namespace Kazue.Api.Controllers
         /// <param name="req"></param>
         /// <param name="id"></param>
         /// <returns></returns>
+        [Authorize(Roles = RolesHelper.ADMIN)]
         [HttpPut]
         [Route("{id}")]
         [ProducesResponseType(typeof(QueueResponse), StatusCodes.Status200OK)]
@@ -110,6 +114,7 @@ namespace Kazue.Api.Controllers
         /// <param name="useCase"></param>
         /// <param name="id"></param>
         /// <returns></returns>
+        [Authorize(Roles = RolesHelper.ADMIN)]
         [HttpDelete]
         [Route("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]

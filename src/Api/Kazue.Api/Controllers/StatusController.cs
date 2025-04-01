@@ -3,6 +3,7 @@ using Kazue.Application.UseCases.Status.Delete;
 using Kazue.Application.UseCases.Status.Get;
 using Kazue.Application.UseCases.Status.GetById;
 using Kazue.Application.UseCases.Status.Update;
+using Kazue.Domain.Helper;
 using Kazue.Domain.Request.Status;
 using Kazue.Domain.Response.Error;
 using Kazue.Domain.Response.Shared;
@@ -15,7 +16,7 @@ namespace Kazue.Api.Controllers
     /// <summary>
     /// Controller responsible for manage data regarding status
     /// </summary>
-    //[Authorize]
+    [Authorize(Roles = RolesHelper.ADMIN)]
     [Route("v1/api/status")]
     [ApiController]
     public class StatusController : ControllerBase

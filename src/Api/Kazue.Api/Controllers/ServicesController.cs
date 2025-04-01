@@ -3,6 +3,7 @@ using Kazue.Application.UseCases.Service.Delete;
 using Kazue.Application.UseCases.Service.Get;
 using Kazue.Application.UseCases.Service.GetById;
 using Kazue.Application.UseCases.Service.Update;
+using Kazue.Domain.Helper;
 using Kazue.Domain.Request.Service;
 using Kazue.Domain.Response.Error;
 using Kazue.Domain.Response.Service;
@@ -15,7 +16,7 @@ namespace Kazue.Api.Controllers
     /// <summary>
     /// Controller responsible for manage data regarding services
     /// </summary>
-    //[Authorize]
+    [Authorize(Roles = RolesHelper.ADMIN)]
     [Route("v1/api/services")]
     [ApiController]
     public class ServicesController : ControllerBase

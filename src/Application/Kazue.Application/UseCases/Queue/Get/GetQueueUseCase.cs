@@ -28,7 +28,7 @@ public class GetQueueUseCase(
         {
             foreach (var entity in listApiResponse)
             {
-                var servicesList = await GetServicesList(entity.IDS_SERVICES.Split());
+                var servicesList = await GetServicesList(entity.IDS_SERVICES.Split(','));
 
                 var queue = QueueAdapter.FromEntityToResponse(entity, servicesList);
                 apiResponse.Response.Add(queue);
@@ -36,6 +36,7 @@ public class GetQueueUseCase(
         }
 
         apiResponse.ResultCount = listApiResponse.Count;
+        apiResponse.RowsCount = listApiResponse.First().QT_ROWS;
 
         return apiResponse;
     }

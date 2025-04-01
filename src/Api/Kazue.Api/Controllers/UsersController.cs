@@ -4,6 +4,7 @@ using Kazue.Application.UseCases.User.Delete;
 using Kazue.Application.UseCases.User.Get;
 using Kazue.Application.UseCases.User.GetById;
 using Kazue.Application.UseCases.User.Update;
+using Kazue.Domain.Helper;
 using Kazue.Domain.Request.User;
 using Kazue.Domain.Response.Error;
 using Kazue.Domain.Response.Shared;
@@ -70,6 +71,7 @@ public class UsersController : ControllerBase
     /// <param name="req"></param>
     /// <param name="useCase"></param>
     /// <returns></returns>
+    [Authorize(Roles = RolesHelper.ADMIN)]
     [HttpGet]
     [ProducesResponseType(typeof(ListApiResponse<UserResponse>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status404NotFound)]
@@ -92,6 +94,7 @@ public class UsersController : ControllerBase
     /// <param name="req"></param>
     /// <param name="id"></param>
     /// <returns></returns>
+    [Authorize(Roles = RolesHelper.ADMIN)]
     [HttpPut]
     [Route("{id}")]
     [Authorize]

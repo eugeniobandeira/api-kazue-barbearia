@@ -3,10 +3,12 @@ using Kazue.Application.UseCases.Category.Delete;
 using Kazue.Application.UseCases.Category.Get;
 using Kazue.Application.UseCases.Category.GetById;
 using Kazue.Application.UseCases.Category.Update;
+using Kazue.Domain.Helper;
 using Kazue.Domain.Request.Category;
 using Kazue.Domain.Response.Error;
 using Kazue.Domain.Response.Category;
 using Kazue.Domain.Response.Shared;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Kazue.Api.Controllers
@@ -14,6 +16,7 @@ namespace Kazue.Api.Controllers
     /// <summary>
     /// Controller responsible for manage categories
     /// </summary>
+    [Authorize(Roles = RolesHelper.ADMIN)]
     [Route("v1/api/category")]
     [ApiController]
     public class CategoryController : ControllerBase
